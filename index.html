@@ -21,7 +21,10 @@
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
-                    <a href="/" class="navbar_link">Home</a>
+                    <a href="#home" class="navbar_link">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="#services" class="navbar_link">Services</a>
                 </li>
                 <li class="navbar_item">
                     <a href="/pages/BuyRent.html" class="navbar_link">Buy/Rent</a>
@@ -37,7 +40,7 @@
     </nav>
 
     <!--Hero Section-->
-    <div class="main">
+    <div class="main" id="home">
         <div class="main_container">
             <div class="main_content">
                 <h1>Find Your</h1>
@@ -53,16 +56,82 @@
 
     <!--Services Section-->
 
-    <div class="services">
+    <div class="services" id="services">
         <h1>See what the hype is about</h1>
         <div class="services_container">
             <div class="services_card">
-                <h2>Are you ready?</h2>
-                <p>AI Powered Technology</p>
-                <button>Get Started</button>
+                <h2>Trying to buy a house?</h2>
+                <p>Find out who's selling</p>
+                <button id="buyHouseBtn">Find Out</button>
+            </div>
+            <div class="services_card">
+                <h2>Trying to rent?</h2>
+                <p>Find the best apartments</p>
+                <button id="rentHouseBtn">Click here</button>
+            </div>
+            <div class="services_card">
+                <h2>Trying to sell a house?</h2>
+                <p>Publish here</p>
+                <button id="sellHouseBtn">Get Started</button>
             </div>
         </div>
     </div>
+    <!--Footer Section-->
+    <div class="footer_container">
+        <div class="footer_links">
+            <div class="footer_link-wrapper">
+                <div class="footer_link-items">
+                    <h2>About Us</h2>
+                    <a href="/">How it works</a>
+                    <a href="/">Testimonials</a>
+                    <a href="/">Careers</a>
+                    <a href="/">Terms of Service</a>
+                </div>
+                <div class="footer_link-items">
+                    <h2>Contact Us</h2>
+                    <a href="/">Contact</a>
+                    <a href="/">Support</a>
+                    <a href="/">Thru Gmail</a>
+                    <a href="/">Phone number</a>
+                </div>
+            </div>
+            <div class="footer_link-wrapper">
+                <div class="footer_link-items">
+                    <h2>Partners</h2>
+                    <a href="/">A RealEstate</a>
+                    <a href="/">B RealEstate</a>
+                    <a href="/">C RealEstate</a>
+                    <a href="/">D RealEstate</a>
+                </div>
+                <div class="footer_link-items">
+                    <h2>Social media</h2>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="social_media">
+            <div class="social_media-wrap">
+                <div class="footer_logo">
+                    <a href="/" id="footer_logo"> <i class="fas fa-house-flag"></i>AFA</a>
+                </div>
+                <p class="website_rights">AFA © 2023.All rights reserved</p>
+                <div class="social_icons">
+                    <a href="/" class="social_icon_link" target="_blank"><i class="fab fa-facebook"></i></a>
+                
+                    <a href="https://www.instagram.com" class="social_icon_link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" class="social_icon_link" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.twitter.com" class="social_icon_link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com" class="social_icon_link" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
