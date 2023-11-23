@@ -246,9 +246,10 @@
     color: #fff;
     text-decoration: none;
 }
+
 #main_img {
     width: 100%; 
-    animation: moveImage 10s infinite linear; 
+    animation: moveImage 2s infinite linear; 
 }
 
 @keyframes moveImage {
@@ -256,7 +257,7 @@
         transform: translateX(0);
     }
     50% {
-        transform: translateX(50%); 
+        transform: translateX(40px); 
     }
     100% {
         transform: translateX(0);
