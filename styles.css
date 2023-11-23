@@ -272,7 +272,7 @@
     left: 0;
     width: 0;
     height: 100%;
-    background: #4837ff;
+    background-image: linear-gradient(to top,#b721ff 0%,#21d4fd 100%); 
     transition: all 0.35s;
     border-radius: 4px;
 }
