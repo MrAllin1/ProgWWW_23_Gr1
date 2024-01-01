@@ -5,6 +5,9 @@
     font-family:'Kumbh Sans', sans-serif;
     
 }
+body{
+    margin: 0;
+}
 
 .navbar{
     background: #131313;
@@ -570,11 +573,11 @@
     }
     
 }
-/* Video container*/
+/* Vidoe container*/
 .video-container
 {
-    column-count:auto 25em;
-    column-gap:40px;
+    column-count:2;
+    column-gap:20px;
     column-rule:none;
     -webkit-column-count:2;
     -moz-column-gap:20px;
@@ -588,5 +591,4 @@
 }
 #paragraph{
     margin: 20px;
-    padding: 20px;
 }

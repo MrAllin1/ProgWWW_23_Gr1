@@ -574,11 +574,12 @@
 .video-container
 {
     column-count:auto 25em;
-    column-gap:40px;
+    column-gap:20px;
     column-rule:none;
     -webkit-column-count:2;
     -moz-column-gap:20px;
     -ms-column-rule:none;
+    margin-block-end: 20px;
     
 }
 .video-container iframe {
@@ -588,5 +589,4 @@
 }
 #paragraph{
     margin: 20px;
-    padding: 20px;
 }

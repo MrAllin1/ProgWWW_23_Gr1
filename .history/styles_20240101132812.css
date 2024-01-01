@@ -570,11 +570,11 @@
     }
     
 }
-/* Video container*/
+/* Vidoe container*/
 .video-container
 {
-    column-count:auto 25em;
-    column-gap:40px;
+    column-count:2;
+    column-gap:20px;
     column-rule:none;
     -webkit-column-count:2;
     -moz-column-gap:20px;
@@ -583,10 +583,5 @@
 }
 .video-container iframe {
     height: 50vh; /* 50% of the viewport height */
-    width: 50vw; /* 80% of the viewport width */
-    margin:20px;
-}
-#paragraph{
-    margin: 20px;
-    padding: 20px;
+    width: 80vw; /* 80% of the viewport width */
 }
