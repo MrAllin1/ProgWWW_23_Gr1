@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= stylesheet href="stylesSignUp.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Sign Up</title>
 </head>
 <body>
-    
+    <div class="login">
+        <img src="../images/rent_house.svg" alt="login image" class="login__img">
+        <form action="" class="login__form">
+            <h1 class="login__title">Login</h1>
+            <div class="login__content">
+                <div class="login__box">
+                    <i class="ri-user-3-line"></i>
+
+                    <div class="login__box-input login__icon">
+                        <input type="email" placeholder="Email" required class="login__input">
+                        <label for="" class="login_label">Email</label>
+                    </div>
+                </div>
+
+                <div class="login__box">
+                    <i class="ri-lock-2-line login__icon"></i>
+                    <div class="login__box-input">
+                        <input type="password" placeholder="Password" required class="login__input">
+                        <label for="" class="login_label">Password</label>
+                        <i class="ri-eye-off-line login__eye" id="login--eye"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="login__check">
+                <div class="login_check-group">
+                    <input type="checkbox" class="login__check-input">
+                    <label for="" class="login__check-label">Remember Me</label>
+                </div>
+
+                <a href="#" class="login__forgot">Forgot Password?</a>
+            </div>
+            <button class="login__button">Login</button>
+            <p class="login__register">Don't have an account? <a href="#">Register</a></p>
+        </form>
+    </div>
+    <script src="../app.js"></script>
 </body>
 </html>
