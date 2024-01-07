@@ -41,3 +41,43 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/';
     });
 });
+
+/*SHOW HIDDEN - PASSWORD */
+function togglePasswordVisibility(loginPass, loginEye) {
+    const input = document.getElementById(loginPass);
+    const iconEye = document.getElementById(loginEye);
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        iconEye.classList.add('ri-eye-line');
+        iconEye.classList.remove('ri-eye-off-line');
+    } else {
+        input.type = 'password';
+        iconEye.classList.remove('ri-eye-line');
+        iconEye.classList.add('ri-eye-off-line');
+    }
+}
+
+function checkPasswordsMatch() {
+    const password = document.getElementById('login-pass').value;
+    const confirmPassword = document.getElementById('login-pass-confirm').value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return false;
+    }
+
+    // Redirect to home page if passwords match
+    // Replace 'home.html' with the desired URL for your home page
+    window.location.href = 'home.html';
+    return true;
+}
+
+document.querySelector('.login__form').addEventListener('submit', function (event) {
+    if (!checkPasswordsMatch()) {
+        event.preventDefault(); // Prevents the form from submitting if passwords don't match
+    }
+});
+
+
+ 

@@ -1,72 +1,195 @@
-:root{
-    --white-color: #fff;
-    --black-color: #000;
 
-    --body-font: 'Kumbh Sans', sans-serif;
+:root {
+  
+  
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    
+    
+    --body-font:'Kumbh Sans', sans-serif;
     --h1-font-size: 1.75rem;
     --normal-font-size: 1rem;
-    --small-font-size: 0.813rem;
-
+    --small-font-size: .813rem;
+    
     --font-medium: 500;
-}
-
-*{
+  }
+  
+  
+  * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-body,input,button{
+  }
+  
+  body,
+  input,
+  button {
     font-size: var(--normal-font-size);
     font-family: var(--body-font);
-}
-body{
+  }
+  
+  body {
     color: var(--white-color);
-}
-input,button{
+  }
+  
+  input,
+  button {
     border: none;
     outline: none;
-}
-a{
+  }
+  
+  a {
     text-decoration: none;
-}
-img{
+  }
+  
+  img {
     max-width: 100%;
     height: auto;
-}
-
-.login{
+  }
+  
+  
+  .signUp {
     position: relative;
     height: 100vh;
     display: grid;
     align-items: center;
-}
-.login__img{
+  }
+  .signUp__img {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position:center ;
-}
-.login__form{
+    object-position: center;
+    background-color:#141414 ;
+  }
+  .signUp__form {
     position: relative;
-    background-color: hsla(0, 0%, 10%, .1);
+    background-color: hsla(0, 0%, 10%, 0.1);
     border: 2px solid var(--white-color);
     margin-inline: 1.5rem;
     padding: 2.5rem 1.5rem;
     border-radius: 1rem;
-    backdrop-filter: blur(8px);
-}
-
-.login__title{
+    backdrop-filter: blur(20px);
+  }
+  .signUp__title {
+    color: white;
     text-align: center;
     font-size: var(--h1-font-size);
-    font-weight:var(--font-medium);
+    font-weight:500;
     margin-bottom: 2rem;
-}
-.login__content, .login__box{
+  }
+  .signUp__content, .signUp__box {
     display: grid;
-}
-
-.login__content{
+  }
+  .signUp__content {
     row-gap: 1.75rem;
-}
+    margin-bottom: 1.5rem;
+  }
+  .signUp__box {
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    column-gap: 0.75rem;
+    border-bottom: 2px solid var(--white-color);
+  }
+  .signUp__icon, .signUp__eye , .signUp__eye-confirm {
+    font-size: 1.25rem;
+  }
+  .signUp__input {
+    width: 100%;
+    padding-block: 0.8rem;
+    background: none;
+    color: var(--white-color);
+    position: relative;
+    z-index: 1;
+  }
+  .signUp__box-input {
+    position: relative;
+  }
+  .signUp__label {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    font-weight: var(--font-medium);
+    transition: top 0.3s, font-size 0.3s;
+  }
+  .signUp__eye, .signUp__eye-confirm {
+    position: absolute;
+    right: 0;
+    top: 18px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .signUp__box:nth-child(2) input {
+    padding-right: 1.8rem;
+  }
+  .signUp__check, .signUp__check-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .signUp__check {
+    margin-bottom: 1.5rem;
+  }
+  .signUp__check-label, .signUp__forgot, .signUp__register {
+    font-size: var(--small-font-size);
+  }
+  .signUp__check-group {
+    column-gap: 0.5rem;
+  }
+  .signUp__check-input {
+    width: 16px;
+    height: 16px;
+  }
+  .signUp__forgot {
+    color: var(--white-color);
+  }
+  .signUp__forgot:hover {
+    text-decoration: underline;
+  }
+  .signUp__button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--white-color);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  .signUp__register {
+    text-align: center;
+  }
+  .signUp__register a {
+    color: var(--white-color);
+    font-weight: var(--font-medium);
+  }
+  .signUp__register a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  .signUp__input:focus + .signUp__label {
+    top: -12px;
+    font-size: var(--small-font-size);
+  }
+  
+  
+  .signUp__input:not(:placeholder-shown).signUp__input:not(:focus) + .signUp__label {
+    top: -12px;
+    font-size: var(--small-font-size);
+  }
+  
+  
+  
+  @media screen and (min-width: 576px) {
+    .signUp {
+      justify-content: center;
+    }
+    .signUp__form {
+      width: 432px;
+      padding: 4rem 3rem 3.5rem;
+      border-radius: 1.5rem;
+    }
+    .signUp__title {
+      font-size: 2rem;
+    }
+  }
