@@ -79,13 +79,5 @@ document.querySelector('.login__form').addEventListener('submit', function (even
     }
 });
 
-document.querySelectorAll('.view_button').forEach(button => {
-    button.addEventListener('click', function() {
-        const targetUrl = this.dataset.targetUrl;
-        if (targetUrl) {
-            window.location.replace(targetUrl);
-        }
-    });
-});
 
  

@@ -203,51 +203,7 @@
 
 /* Mobile Responsive */
 
-@media screen and (max-width:768px) {
-    .main_container{
-        display: grid;
-        grid-template-columns: auto;
-        align-items: center;
-        justify-self: center;
-        width: 100%;
-        margin: 0 auto;
-        height: 90vh;
-    }
-    .main_content{
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-    .main_content h1{
-        font-size: 2.5rem;
-        margin-top: 2rem;
-    }
-    .main_content h2{
-        font-size: 3rem;
-    }
-    .main_content p{
-        margin-top: 1rem;
-        font-size: 1.2rem;
-        color: whitesmoke;
-    }
-}
 
-@media screen and (max-width:480px) {
-    .main_content h1{
-        font-size: 2rem;
-        margin-top: 3rem;
-    }
-    .main_content h2{
-        font-size: 2rem;
-    }
-    .main_content p{
-        margin-top: 2rem;
-        font-size: 1.5rem;
-    }
-    .main_btn{
-        padding: 12px 36px;
-        margin: 2.5rem 0;
-    }
-}
 /* Services Section CSS */
 .services{
     background: #141414;
@@ -289,24 +245,7 @@
     align-items: center;
 }
 
-.services a{
-    position: absolute;
-    top: 350px;
-    left: 30px;
-    color: white;
-    text-decoration: none;
-}
 
-.services_card p {
-    position: absolute;
-    top: 400px;
-    left: 30px;
-}
-.services_card span {
-    position: absolute;
-    top: 450px;
-    left: 30px;
-}
 .view_button {
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
     background-size: 100% 100%;
@@ -323,81 +262,6 @@
     transform: translateY(0);
 }
 
-.view_button:hover {
-    background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
-    background-size: 100% 100%;
-    background-position: center;
-    color: #fff;
-    transform: translateY(-10px);
-    opacity: 0.9;
-}
-.Acard-1 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/Apartament_1/item_1.jpg');
-}
-
-.Acard-2 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/Apartament_2/Item_1.jpg');
-}
-.Acard-3 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/Apartament_3/Item_1.jpg');
-}
-
-.Acard-4 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/Apartament_4/Item_1.jpg');
-}
-
-.Hcard-1 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/House_1/item_1.jpg');
-}
-.Hcard-2 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/House_2/Item_1.jpg');
-}
-.Hcard-3 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/House_3/Item_1.jpg');
-}
-.Hcard-4 {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.0) 0%,
-        rgba(17,17,17,0.6) 100%
-        ),
-        url('/images/House_4/Item_1.jpg');
-}
 
 /* Footer CSS   */
 

@@ -289,24 +289,7 @@
     align-items: center;
 }
 
-.services a{
-    position: absolute;
-    top: 350px;
-    left: 30px;
-    color: white;
-    text-decoration: none;
-}
 
-.services_card p {
-    position: absolute;
-    top: 400px;
-    left: 30px;
-}
-.services_card span {
-    position: absolute;
-    top: 450px;
-    left: 30px;
-}
 .view_button {
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
     background-size: 100% 100%;

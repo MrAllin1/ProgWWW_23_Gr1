@@ -289,12 +289,10 @@
     align-items: center;
 }
 
-.services a{
+.services h5{
     position: absolute;
     top: 350px;
     left: 30px;
-    color: white;
-    text-decoration: none;
 }
 
 .services_card p {
