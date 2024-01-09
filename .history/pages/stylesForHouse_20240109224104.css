@@ -288,12 +288,30 @@
     justify-content: center;
     align-items: center;
 }
-.services_link{
+
+.view_button_link {
+    position: absolute;
+    top: 250px;
+    left: 60px;
+}
+#services a_links {
     position: absolute;
     top: 350px;
     left: 30px;
     color: white;
     text-decoration: none;
+    transition: color 0.5s ease; /* Add transition for smooth color change */
+}
+
+#services a_links:hover {
+    color: white; /* Set the hover color to match the default color */
+    text-decoration: none; /* Remove underline on hover */
+}
+.view_button_link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .services_card p {
@@ -313,9 +331,6 @@
     padding: 10px 20px;
     border: none;
     outline: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 4px;
     margin-top: 10px;
     cursor: pointer;

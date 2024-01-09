@@ -288,7 +288,13 @@
     justify-content: center;
     align-items: center;
 }
-.services_link{
+
+.view_button_link {
+    position: absolute;
+    top: 250px;
+    left: 60px;
+}
+#services a_links {
     position: absolute;
     top: 350px;
     left: 30px;
@@ -296,6 +302,22 @@
     text-decoration: none;
 }
 
+#services a_links:hover {
+    color: /* Your desired hover color */;
+}
+
+.view_button_link {
+    position: absolute;
+    top: 50%; /* Center the button vertically */
+    left: 50%; /* Center the button horizontally */
+    transform: translate(-50%, -50%); /* Center the button precisely */
+}
+
+/* Remove the .view_button_link styles */
+#services a_links:hover {
+    color: /* Your desired hover color */;
+    text-decoration: underline;
+}
 .services_card p {
     position: absolute;
     top: 400px;
@@ -313,9 +335,6 @@
     padding: 10px 20px;
     border: none;
     outline: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 4px;
     margin-top: 10px;
     cursor: pointer;
