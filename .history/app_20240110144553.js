@@ -87,55 +87,17 @@ document.querySelectorAll('.view_button').forEach(button => {
         }
     });
 });
-function filterByCity() {
-    var selectedCity = document.getElementById('location').value;
-    var propertyType = document.getElementById('property-type').value;
-    var minPrice = parseFloat(document.getElementById('min-price').value);
-    var maxPrice = parseFloat(document.getElementById('max-price').value);
-  
-    // Perform filtering logic based on the selected city and other criteria
-    // Replace this with your actual filtering logic
-    console.log("Selected City: " + selectedCity);
-    console.log("Property Type: " + propertyType);
-    console.log("Minimum Price: " + minPrice);
-    console.log("Maximum Price: " + maxPrice);
-  
-    // Add logic to display filtered properties for the selected city
-    var searchResults = document.getElementById('search-results');
-    searchResults.innerHTML = "Search results for properties in " + selectedCity + " with criteria: " + propertyType + ", between $" + minPrice + " and $" + maxPrice;
-    searchResults.style.display = "block";
-  }
-  
-  function searchProperties() {
-    var searchInput = document.getElementById('search-input').value;
-    var minPrice = parseFloat(document.getElementById('min-price').value);
-    var maxPrice = parseFloat(document.getElementById('max-price').value);
-    var propertyType = document.getElementById('property-type').value;
-    var location = document.getElementById('location').value;
-  
-    // Perform search logic based on the input values
-    // Replace this with your actual search logic
-    console.log("Search Input: " + searchInput);
-    console.log("Minimum Price: " + minPrice);
-    console.log("Maximum Price: " + maxPrice);
-    console.log("Property Type: " + propertyType);
-    console.log("Location: " + location);
-      
-    // Hide all property cards
-    var allCards = document.querySelectorAll('.services_card');
-    allCards.forEach(function(card) {
-    card.style.display = "none";
-  });
 
-  // Show property cards for the selected city
-  var selectedCityCards = document.querySelectorAll('.services_card.' + selectedCity);
-  selectedCityCards.forEach(function(card) {
-    card.style.display = "block";
-  });
-    // Display search results
-    var searchResults = document.getElementById('search-results');
-    searchResults.innerHTML = "Search results for: " + searchInput + ", " + propertyType + ", " + location + " between $" + minPrice + " and $" + maxPrice;
-    searchResults.style.display = "block";
-  }
-  
-  
+var priceSlider = document.getElementById("price-slider-input");
+var priceInput = document.getElementById("price-input");
+
+priceSlider.addEventListener("input", function() {
+    priceInput.textContent = "$" + numberWithCommas(this.value);
+});
+
+// Set initial price value
+priceInput.textContent = "$" + numberWithCommas(priceSlider.value);
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

@@ -306,36 +306,40 @@
     top: 450px;
     left: 30px;
 }
-
 .search-bar {
+    margin: 20px 0;
+  }
+
+  .price-slider {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
-  
-  .search-bar input {
-    margin-bottom: 10px; /* Add some space between the input and the button */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+
+  #price-input {
+    width: 50px;
+    margin: 0 10px;
+    text-align: center;
   }
-  .input-group{
-    color:white;
+
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
   }
-  .white-text {
+
+  .search-button {
+    background-color: #4caf50;
     color: white;
-  }
-  
-  
-  .search-bar button.search-button {
     padding: 10px;
     border: none;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
+  .search-button:hover {
+    background-color: #45a049;
+  }
 .view_button {
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
     background-size: 100% 100%;

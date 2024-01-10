@@ -138,4 +138,3 @@ function filterByCity() {
     searchResults.style.display = "block";
   }
   
-  

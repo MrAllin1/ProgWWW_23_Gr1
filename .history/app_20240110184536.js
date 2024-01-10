@@ -87,55 +87,52 @@ document.querySelectorAll('.view_button').forEach(button => {
         }
     });
 });
-function filterByCity() {
-    var selectedCity = document.getElementById('location').value;
-    var propertyType = document.getElementById('property-type').value;
+// Function to apply filters based on price range, property type, and location
+function applyFilters() {
     var minPrice = parseFloat(document.getElementById('min-price').value);
     var maxPrice = parseFloat(document.getElementById('max-price').value);
+    var propertyType = document.getElementById('property-type').value;
+    var city = document.getElementById('city').value;
   
-    // Perform filtering logic based on the selected city and other criteria
+    if (maxPrice > 100000000) {
+      alert("Maximum price cannot exceed 100,000,000");
+      return;
+    }
+  
+    // Perform filtering logic based on the min and max price, property type, and selected city
     // Replace this with your actual filtering logic
-    console.log("Selected City: " + selectedCity);
-    console.log("Property Type: " + propertyType);
-    console.log("Minimum Price: " + minPrice);
-    console.log("Maximum Price: " + maxPrice);
-  
-    // Add logic to display filtered properties for the selected city
-    var searchResults = document.getElementById('search-results');
-    searchResults.innerHTML = "Search results for properties in " + selectedCity + " with criteria: " + propertyType + ", between $" + minPrice + " and $" + maxPrice;
-    searchResults.style.display = "block";
-  }
-  
-  function searchProperties() {
-    var searchInput = document.getElementById('search-input').value;
-    var minPrice = parseFloat(document.getElementById('min-price').value);
-    var maxPrice = parseFloat(document.getElementById('max-price').value);
-    var propertyType = document.getElementById('property-type').value;
-    var location = document.getElementById('location').value;
-  
-    // Perform search logic based on the input values
-    // Replace this with your actual search logic
-    console.log("Search Input: " + searchInput);
     console.log("Minimum Price: " + minPrice);
     console.log("Maximum Price: " + maxPrice);
     console.log("Property Type: " + propertyType);
-    console.log("Location: " + location);
-      
-    // Hide all property cards
-    var allCards = document.querySelectorAll('.services_card');
-    allCards.forEach(function(card) {
-    card.style.display = "none";
-  });
-
-  // Show property cards for the selected city
-  var selectedCityCards = document.querySelectorAll('.services_card.' + selectedCity);
-  selectedCityCards.forEach(function(card) {
-    card.style.display = "block";
-  });
-    // Display search results
-    var searchResults = document.getElementById('search-results');
-    searchResults.innerHTML = "Search results for: " + searchInput + ", " + propertyType + ", " + location + " between $" + minPrice + " and $" + maxPrice;
-    searchResults.style.display = "block";
+    console.log("City: " + city);
+  
+    // Display properties from the selected city
+    switch (city) {
+      case "Chicago":
+        console.log("Properties in Chicago: 1400 W Monroe St, 757 S Kedvale Ave");
+        break;
+      case "New York":
+        console.log("Properties in New York: 322 W 57th St, 111 Central Park N, 33 E 70th St");
+        break;
+      case "Seattle":
+        console.log("Properties in Seattle: 12253 9th Ave NW");
+        break;
+      case "Los Angeles":
+        console.log("Properties in Los Angeles: 6550 W 84th St, 3917 Mclaughlin Ave");
+        break;
+      case "Porter Ranch":
+        console.log("Properties in Porter Ranch: 20352 Via Galileo");
+        break;
+      case "Las Vegas":
+        console.log("Properties in Las Vegas: 4575 Dean Martin Dr, 10770 Maltese Falcon Ave, 19 Flying Cloud Ln, 2747 Paradise Rd");
+        break;
+      case "Miami":
+        console.log("Properties in Miami: 2675 S Bayshore Dr, 900 Biscayne Blvd");
+        break;
+      case "San Francisco":
+        console.log("Properties in San Francisco: 2266 9th Ave, 1515 Union St");
+        break;
+      default:
+        console.log("No properties available for the selected city");
+    }
   }
-  
-  

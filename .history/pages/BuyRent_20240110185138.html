@@ -47,40 +47,46 @@
     <div class="services" id="services">
         <h1>House and Apartment in Sale</h1>
         <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search...">
-          <button class="search-button" onclick="searchProperties()">Search</button>
-          <label for="min-price" class="white-text">Min Price</label>
-          <div class="input-group">
-            <span>$</span><input type="text" id="min-price" placeholder="0.00">
+            <input type="text" placeholder="Search...">
+            <button class="search-button">Q</button>
           </div>
-          <label for="max-price" class="white-text">Max Price</label>
-          <div class="input-group">
-            <span>$</span><input type="text" id="max-price" placeholder="0.00">
-            <label for="property-type" class="white-text">Property Type</label>
-            <select id="property-type">
-              <option value="">Select</option>
-              <option value="house">House</option>
-              <option value="apartment">Apartment</option>
-            </select>
-            <label for="location" class="white-text">Location</label>
-            <select id="location" onchange="filterByCity()">
-              <option value="">Select</option>
-              <option value="San Francisco">San Francisco</option>
-              <option value="Miami">Miami</option>
-              <option value="Washington DC">Washington DC</option>
-              <option value="Las Vegas">Las Vegas</option>
-              <option value="Porter Ranch">Porter Ranch</option>
-              <option value="Los Angeles">Los Angeles</option>
-              <option value="New York">New York</option>
-              <option value="Seattle">Seattle</option>
-              <option value="Chicago">Chicago</option>
-            </select>
+        <!-- Add input fields for minimum and maximum price with dollar sign and labels -->
+        <div>
+            <label for="min-price">Min Price</label>
+            <div class="input-group">
+              <span>$</span><input type="text" id="min-price" placeholder="0.00">
+            </div>
           </div>
-        </div>
-        <div id="search-results" style="display: none;">
-          <!-- Search results will be displayed here -->
-        </div>
-      </div>  
+          <div>
+            <label for="max-price">Max Price</label>
+            <div class="input-group">
+              <span>$</span><input type="text" id="max-price" placeholder="0.00">
+              <label for="property-type">Property Type</label>
+              <select id="property-type">
+                <option value="">Select</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+              </select>
+              <label for="location">Location</label>
+              <select id="location">
+                <option value="">Select</option>
+                <option value="New York">New York</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <!-- Add more location options as needed -->
+              </select>
+            </div>
+          </div>
+          <div>
+           
+          </div>
+          
+          <!-- Add a dropdown menu for location selection -->
+          <div>
+
+          </div>
+          
+          <!-- Add a button to trigger the filter -->
+          <button onclick="applyFilters()">Apply</button>
         <div class="services_container">
             <div class="services_card Acard-1">
                 <a href="https://www.google.com/maps/place/1400+W+Monroe+St+Unit+3D,+Chicago,+IL+60607/@41.8921309,-87.6437649,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2c022b8c54db:0xb0636704019237d3!8m2!3d41.8921309!4d-87.6415762" target="_blank" class="services_link">1400 W Monroe St Unit 3D, Chicago, IL 60607</a>                

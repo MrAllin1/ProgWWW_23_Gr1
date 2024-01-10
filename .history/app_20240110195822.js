@@ -137,5 +137,24 @@ function filterByCity() {
     searchResults.innerHTML = "Search results for: " + searchInput + ", " + propertyType + ", " + location + " between $" + minPrice + " and $" + maxPrice;
     searchResults.style.display = "block";
   }
-  
+  let currentIndex = 0;
+  const photos = document.querySelector('.photos');
+  const photoWidth = document.querySelector('.photo').clientWidth;
+
+  function movePhotos(direction) {
+    if (direction === 'next' && currentIndex < 2) {
+      currentIndex++;
+    } else if (direction === 'prev' && currentIndex > 0) {
+      currentIndex--;
+    }
+    photos.style.transform = `translateX(-${photoWidth * currentIndex}px)`;
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      movePhotos('next');
+    } else if (event.key === 'ArrowLeft') {
+      movePhotos('prev');
+    }
+  });
   

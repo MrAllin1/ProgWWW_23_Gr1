@@ -120,22 +120,10 @@ function filterByCity() {
     console.log("Maximum Price: " + maxPrice);
     console.log("Property Type: " + propertyType);
     console.log("Location: " + location);
-      
-    // Hide all property cards
-    var allCards = document.querySelectorAll('.services_card');
-    allCards.forEach(function(card) {
-    card.style.display = "none";
-  });
-
-  // Show property cards for the selected city
-  var selectedCityCards = document.querySelectorAll('.services_card.' + selectedCity);
-  selectedCityCards.forEach(function(card) {
-    card.style.display = "block";
-  });
+  
     // Display search results
     var searchResults = document.getElementById('search-results');
     searchResults.innerHTML = "Search results for: " + searchInput + ", " + propertyType + ", " + location + " between $" + minPrice + " and $" + maxPrice;
     searchResults.style.display = "block";
   }
-  
   

@@ -307,35 +307,20 @@
     left: 30px;
 }
 
-.search-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .search-bar input {
-    margin-bottom: 10px; /* Add some space between the input and the button */
+.search-bar input {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     outline: none;
   }
-  .input-group{
-    color:white;
-  }
-  .white-text {
-    color: white;
-  }
-  
   
   .search-bar button.search-button {
     padding: 10px;
     border: none;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
-    border-radius: 5px;
+    background-color: yellow; /* Representing the magnifying glass button */
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
   }
-  
 .view_button {
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
     background-size: 100% 100%;

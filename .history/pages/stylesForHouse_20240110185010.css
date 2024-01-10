@@ -320,18 +320,11 @@
     border-radius: 5px;
     outline: none;
   }
-  .input-group{
-    color:white;
-  }
-  .white-text {
-    color: white;
-  }
-  
   
   .search-bar button.search-button {
     padding: 10px;
     border: none;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); /* Initial color */
+    background-color: yellow; /* Representing the magnifying glass button */
     border-radius: 5px;
     cursor: pointer;
   }
