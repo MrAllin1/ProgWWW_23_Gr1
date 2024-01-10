@@ -1,17 +1,23 @@
-const menu= document.querySelector('#mobile-menu');
+const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.navbar_menu');
 
-menu.addEventListener('click',function(){
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
-})
+if (menu) {
+    menu.addEventListener('click', function () {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+}
+
 
 document.querySelectorAll('.navbar_link').forEach(anchor => {
+   
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
+        console.log(targetElement);
+        console.log(' Targettt idd '+targetId);
 
         if (targetElement) {
             // Calculate the offset of the navbar
@@ -27,20 +33,36 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
             });
         }
     });
+    document.querySelectorAll('.navbar_link_buy_rent').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = './pages/BuyRent.html';
+        });
+    });
 });
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('buyHouseBtn').addEventListener('click', function () {
-        window.location.href = '/';
-    });
+    const buyHouseBtn = document.getElementById('buyHouseBtn');
+    const rentHouseBtn = document.getElementById('rentHouseBtn');
+    const sellHouseBtn = document.getElementById('sellHouseBtn');
 
-    document.getElementById('rentHouseBtn').addEventListener('click', function () {
-        window.location.href = '/';
-    });
+    if (buyHouseBtn) {
+        buyHouseBtn.addEventListener('click', function () {
+            window.location.href = './pages/buyRent.html';
+        });
+    }
 
-    document.getElementById('sellHouseBtn').addEventListener('click', function () {
-        window.location.href = '/';
-    });
-});
+    if (rentHouseBtn) {
+        rentHouseBtn.addEventListener('click', function () {
+            window.location.href = './pages/buyRent.html';
+        });
+    }
+
+    if (sellHouseBtn) {
+        sellHouseBtn.addEventListener('click', function () {
+            window.location.href = './pages/sell.html';
+        });
+    }}
+    );
+
 
 /*SHOW HIDDEN - PASSWORD */
 function togglePasswordVisibility(loginPass, loginEye) {
@@ -58,26 +80,6 @@ function togglePasswordVisibility(loginPass, loginEye) {
     }
 }
 
-function checkPasswordsMatch() {
-    const password = document.getElementById('login-pass').value;
-    const confirmPassword = document.getElementById('login-pass-confirm').value;
-
-    if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return false;
-    }
-
-    // Redirect to home page if passwords match
-    // Replace 'home.html' with the desired URL for your home page
-    window.location.href = 'home.html';
-    return true;
-}
-
-document.querySelector('.login__form').addEventListener('submit', function (event) {
-    if (!checkPasswordsMatch()) {
-        event.preventDefault(); // Prevents the form from submitting if passwords don't match
-    }
-});
 
 document.querySelectorAll('.view_button').forEach(button => {
     button.addEventListener('click', function () {
@@ -87,3 +89,41 @@ document.querySelectorAll('.view_button').forEach(button => {
         }
     });
 });
+
+// app.js
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('signUp.html')) {
+        // Code specific to the signUp.html page
+        const signUpForm = document.querySelector('.signUp__form');
+        const signUpButton = signUpForm.querySelector('.signUp__button');
+      
+        signUpButton.addEventListener('click', function (event) {
+          event.preventDefault();
+      
+          const email = document.getElementById('signUp-email').value;
+          const password = document.getElementById('signUp-pass').value;
+          const confirmPassword = document.getElementById('signUp-pass-confirm').value;
+      
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return ;
+          }
+      
+          // Store email and password in localStorage
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', password);
+      
+          const storedEmail = localStorage.getItem('email');
+          const storedPassword = localStorage.getItem('password');
+      
+          window.history.replaceState(null, document.title, window.location.href);
+
+          // Redirect to home page after successful signup
+          window.location.href = '../index.html';
+        });
+    }
+    // Add more conditions for other pages as needed
+});
+
+
