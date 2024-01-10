@@ -120,9 +120,10 @@ function filterByCity() {
     console.log("Maximum Price: " + maxPrice);
     console.log("Property Type: " + propertyType);
     console.log("Location: " + location);
-      // Hide all property cards
-  var allCards = document.querySelectorAll('.services_card');
-  allCards.forEach(function(card) {
+      
+    // Hide all property cards
+    var allCards = document.querySelectorAll('.services_card');
+    allCards.forEach(function(card) {
     card.style.display = "none";
   });
 
@@ -136,17 +137,41 @@ function filterByCity() {
     searchResults.innerHTML = "Search results for: " + searchInput + ", " + propertyType + ", " + location + " between $" + minPrice + " and $" + maxPrice;
     searchResults.style.display = "block";
   }
-  const gallery = document.querySelector(".gallery");
-  const leftButton = document.querySelector(".arrow-button.left");
-  const rightButton = document.querySelector(".arrow-button.right");
-  let index = 0;
+    // Get the "View all" button
+    const viewAllBtn = document.getElementById('viewAllBtn');
 
-  leftButton.addEventListener("click", () => {
-    index = index > 0 ? index - 1 : gallery.children.length - 1;
-    gallery.style.transform = `translateX(-${index * 100}%)`;
-  });
+    // Add a click event listener to the button
+    viewAllBtn.addEventListener('click', function() {
+      // Get all the images
+      const images = document.querySelectorAll('.image');
 
-  rightButton.addEventListener("click", () => {
-    index = index < gallery.children.length - 1 ? index + 1 : 0;
-    gallery.style.transform = `translateX(-${index * 100}%)`;
-  });
+      // Create a modal or lightbox to display all the images
+      const modal = document.createElement('div');
+      modal.classList.add('modal');
+
+      // Create a container for the images in the modal
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+
+      // Add each image to the modal container
+      images.forEach(image => {
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.alt;
+        modalContent.appendChild(img);
+      });
+
+      // Add the modal container to the modal
+      modal.appendChild(modalContent);
+
+      // Add the modal to the document
+      document.body.appendChild(modal);
+
+      // Close the modal when clicking outside the images
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.remove();
+        }
+      });
+    });
+  

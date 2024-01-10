@@ -55,15 +55,38 @@
             </ul>
         </div>
     </nav>
-    <div class="gallery">
-        <img src="/images/Apartment_1/item_1.jpg" alt="Image 1" />
-        <img src="/images/Apartment_1/item_2.jpg" alt="Image 2" />
-        <img src="/images/Apartment_1/item_3.jpg" alt="Image 3" />
-        <img src="/images/Apartment_1/item_4.jpg" alt="Image 4" />
-        <img src="/images/Apartment_1/item_5.jpg" alt="Image 5" />
-    </div>
-    <button class="arrow-button left">&#8249;</button>
-    <button class="arrow-button right">&#8250;</button>
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <title>Swipeable Image Gallery</title>
+        <style>
+          .gallery {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+          }
+    
+          .gallery img {
+            scroll-snap-align: center;
+            width: 100%;
+            height: auto;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="gallery">
+          <img src="/images/Apartment_1/item_1.jpg" alt="Image 1" />
+          <img src="/images/Apartment_1/item_2.jpg" alt="Image 2" />
+          <img src="/images/Apartment_1/item_3.jpg" alt="Image 3" />
+          <img src="/images/Apartment_1/item_4.jpg" alt="Image 4" />
+          <img src="/images/Apartment_1/item_5.jpg" alt="Image 5" />
+        </div>
+            
 
     <div class="footer_container">
         <div class="footer_links">

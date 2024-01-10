@@ -137,16 +137,28 @@ function filterByCity() {
     searchResults.style.display = "block";
   }
   const gallery = document.querySelector(".gallery");
-  const leftButton = document.querySelector(".arrow-button.left");
-  const rightButton = document.querySelector(".arrow-button.right");
-  let index = 0;
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  leftButton.addEventListener("click", () => {
-    index = index > 0 ? index - 1 : gallery.children.length - 1;
-    gallery.style.transform = `translateX(-${index * 100}%)`;
+  gallery.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
   });
 
-  rightButton.addEventListener("click", () => {
-    index = index < gallery.children.length - 1 ? index + 1 : 0;
-    gallery.style.transform = `translateX(-${index * 100}%)`;
+  gallery.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  gallery.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  gallery.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 3;
+    gallery.scrollLeft = scrollLeft - walk;
   });

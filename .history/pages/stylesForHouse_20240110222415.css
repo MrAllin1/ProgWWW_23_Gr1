@@ -332,9 +332,7 @@
     width: 80%;
     margin: 0 auto;
   }
-  .gallery-container {
-    position: relative;
-  }
+
   .gallery img {
     width: 50%;
     height: 50%;

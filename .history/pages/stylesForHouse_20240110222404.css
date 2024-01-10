@@ -332,14 +332,12 @@
     width: 80%;
     margin: 0 auto;
   }
-  .gallery-container {
-    position: relative;
-  }
+
   .gallery img {
     width: 50%;
     height: 50%;
     padding: 20px;
-    margin: 30px;
+    margin: 40px;
   }
 
   .arrow-button {

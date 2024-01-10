@@ -55,15 +55,18 @@
             </ul>
         </div>
     </nav>
+    
     <div class="gallery">
-        <img src="/images/Apartment_1/item_1.jpg" alt="Image 1" />
-        <img src="/images/Apartment_1/item_2.jpg" alt="Image 2" />
-        <img src="/images/Apartment_1/item_3.jpg" alt="Image 3" />
-        <img src="/images/Apartment_1/item_4.jpg" alt="Image 4" />
-        <img src="/images/Apartment_1/item_5.jpg" alt="Image 5" />
-    </div>
-    <button class="arrow-button left">&#8249;</button>
-    <button class="arrow-button right">&#8250;</button>
+        <div class="main-image">
+          <img src="path-to-main-image.jpg" alt="Main View of Property" id="mainImage">
+        </div>
+        <ul class="thumbnails">
+          <li><img src="/images/Apartment_1/item_1.jpg" alt="Thumbnail 1" onclick="changeImage('images/Apartment_1/item_1.jpg')"></li>
+          <li><img src="/images/Apartment_1/item_2.jpg" alt="Thumbnail 2" onclick="changeImage('images/Apartment_1/item_2.jpg')"></li>
+          <!-- More thumbnails -->
+        </ul>
+        <button class="schedule-tour">Schedule tour</button>
+      </div>
 
     <div class="footer_container">
         <div class="footer_links">

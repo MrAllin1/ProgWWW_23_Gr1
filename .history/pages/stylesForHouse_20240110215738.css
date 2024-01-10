@@ -326,47 +326,7 @@
   .white-text {
     color: white;
   }
-  .gallery {
-    display: flex;
-    overflow-x: hidden;
-    width: 80%;
-    margin: 0 auto;
-  }
-  .gallery-container {
-    position: relative;
-  }
-  .gallery img {
-    width: 50%;
-    height: 50%;
-    padding: 20px;
-    margin: 30px;
-  }
 
-  .arrow-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .arrow-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .arrow-button.left {
-    left: 0;
-  }
-
-  .arrow-button.right {
-    right: 0;
-  }
   .search-bar button.search-button {
     padding: 10px;
     border: none;
