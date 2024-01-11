@@ -12,7 +12,7 @@
     <title>Property Display</title>
     <style>
         .navbar{
-            background: #131313;
+            background: #141414;
             height: 80px;
             display: flex;
             justify-content: center;
@@ -176,7 +176,12 @@
                     <a href="./sell.html" class="navbar_link_sell_in_property_display navbar_link">Sell</a>
                 </li>
                 <li class="navbar_btn">
-                    <a href="/pages/signIn.html" class="button">Sign In</a>
+                    <a href="/pages/signIn.html" class="button" id="signIn-button">Sign In</a>
+                </li>
+                <li class="navbar_btn">
+                    <a href="" class="profile-button" id="profile-button">
+                        <i class="fas fa-user fa-sm"></i>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -235,6 +240,19 @@
             detailsHTML += `<a href="dynamicPropertyPage.html?number=${allProperties.indexOf(propertyData)}">View Property Details</a>`;
             return detailsHTML;
         }
+
+        const signInButton = document.getElementById('signIn-button');
+    const profileButton = document.getElementById('profile-button');
+    if(signInButton){    
+        const isUserSignedIn = localStorage.getItem('isUserSignedIn') === 'true';
+    if (isUserSignedIn) {
+        signInButton.style.display = 'none';
+        profileButton.style.display = 'block';
+    } else {
+        signInButton.style.display = 'block';
+        profileButton.style.display = 'none';
+    }
+    }
     </script>
 </body>
 
