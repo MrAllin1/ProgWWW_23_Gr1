@@ -117,11 +117,11 @@
             const propertyAddress = document.getElementById('propertyAddress').value;
             const propertyPrice = document.getElementById('propertyPrice').value;
             const propertyLocation = document.getElementById('propertyLocation').value;
-            const propertyPhotosInput = document.getElementById('propertyPhotos');
+            const photoPreviews = document.getElementById('photoPreview').getElementsByTagName('img');
     
             const propertyPhotos = [];
-            for (const file of propertyPhotosInput.files) {
-                const base64String = await readFileAsBase64(file);
+            for (const img of photoPreviews) {
+                const base64String = await getBase64FromImage(img);
                 propertyPhotos.push(base64String);
             }
     
@@ -142,22 +142,24 @@
             window.location.href = 'property_display.html';
         });
     
-        async function readFileAsBase64(file) {
+        async function getBase64FromImage(img) {
             return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                    resolve(reader.result.split(',')[1]);
-                };
-                reader.onerror = (error) => {
-                    reject(error);
-                };
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+    
+                const base64String = canvas.toDataURL('image/jpeg').split(',')[1];
+                resolve(base64String);
             });
         }
     
         document.getElementById('propertyPhotos').addEventListener('change', function (event) {
             const photoPreview = document.getElementById('photoPreview');
             const files = event.target.files;
+    
+            // Clear previous previews
     
             for (const file of files) {
                 const img = document.createElement('img');
@@ -172,6 +174,7 @@
             }
         });
     </script>
+    
     
 </body>
 
