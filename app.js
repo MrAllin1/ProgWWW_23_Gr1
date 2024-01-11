@@ -152,34 +152,6 @@ document.querySelectorAll('.view_button').forEach(button => {
     });
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const currentPage = window.location.pathname;
-    if (currentPage.includes('signUp.html')) {
-        
-        const signUpForm = document.querySelector('.signUp__form');
-        const signUpButton = signUpForm.querySelector('.signUp__button');
-      
-        signUpButton.addEventListener('click', function (event) {
-          event.preventDefault();
-      
-          const email = document.getElementById('signUp-email').value;
-          const password = document.getElementById('signUp-pass').value;
-          const confirmPassword = document.getElementById('signUp-pass-confirm').value;
-      
-          if (password !== confirmPassword) {
-            alert("Passwords do not match");
-            return ;
-          }
-      
-          
-          localStorage.setItem(email, password);    
-          window.location.href = '../index.html';
-        });
-    }
-    
-});
-
 const gallery = document.querySelector(".gallery");
 const leftButton = document.querySelector(".arrow-button.left");
 const rightButton = document.querySelector(".arrow-button.right");
@@ -253,6 +225,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('signUp.html')) {
+        
+        const signUpForm = document.querySelector('.signUp__form');
+        const signUpButton = signUpForm.querySelector('.signUp__button');
+      
+        signUpButton.addEventListener('click', function (event) {
+          event.preventDefault();
+            saveData();        
+        });
+    }
+});
+
+function saveData() {
+    var userEmail = document.getElementById('signUp-email').value;
+    var userPassword = document.getElementById('signUp-pass').value;
+    var userPasswordConfirm = document.getElementById('signUp-pass-confirm').value;
+
+    if (userPassword !== userPasswordConfirm) {
+        alert("Passwords do not match");
+        return ;
+      }else{
+        localStorage.setItem('isUserSignedIn', 'true');
+        localStorage.setItem('currentUserEmail',userEmail);
+        localStorage.setItem(userEmail, userPassword);
+        window.location.href = '../index.html';
+      }
+}
 
 
 document.getElementById("profile-button").addEventListener("click", function() {
@@ -266,9 +267,21 @@ document.getElementById("profile-button").addEventListener("click", function() {
 
 document.getElementById("log-out").addEventListener("click", function() {
     localStorage.setItem('isUserSignedIn', 'false');
+    localStorage.removeItem('currentUserEmail');
+    location.reload();
+}
+);
+
+document.getElementById("delete-account").addEventListener("click", function() {
+
+   if(confirm('Are you sure you want to delete your account permamently')==true){
+    localStorage.setItem('isUserSignedIn', 'false');
     const currentUserEmail = localStorage.getItem('currentUserEmail');
     localStorage.removeItem(currentUserEmail);
     localStorage.removeItem('currentUserEmail');
     location.reload();
+    }else{
+
+    }
 }
 );
