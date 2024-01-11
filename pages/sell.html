@@ -1,11 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selling Page</title>
+    <title>Real Estate Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ff3366;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        #photos {
+            margin-bottom: 16px;
+        }
+
+        #photos label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ff3366;
+        }
+
+        button {
+            background-color: #ff3366;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="file"] {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        #photoPreview {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #photoPreview img {
+            max-width: 100%;
+            max-height: 100px;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+    </style>
 </head>
+
 <body>
+    <form id="propertyForm">
+        <label for="propertyName">Property Name:</label>
+        <input type="text" id="propertyName" name="propertyName" value="Default Property" required>
+
+        <label for="propertySize">Size:</label>
+        <input type="text" id="propertySize" name="propertySize" value="1000 sq. ft." required>
+
+        <label for="propertyRooms">Number of Rooms:</label>
+        <input type="number" id="propertyRooms" name="propertyRooms" value="3" required>
+
+        <label for="propertyAddress">Address:</label>
+        <input type="text" id="propertyAddress" name="propertyAddress" value="123 Main Street" required>
+
+        <label for="propertyPrice">Price:</label>
+        <input type="text" id="propertyPrice" name="propertyPrice" value="$250,000" required>
+
+        <label for="propertyLocation">Google Maps Link:</label>
+        <input type="text" id="propertyLocation" name="propertyLocation" value="https://maps.google.com/" required>
+
+        <label for="propertyPhotos">Property Photos:</label>
+        <input type="file" id="propertyPhotos" name="propertyPhotos[]" accept="image/*" multiple>
+
+        <div id="photoPreview"></div>
+
+        <button type="submit">Upload Property</button>
+    </form>
+    <script>
+        document.getElementById('propertyForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+    
+            const propertyName = document.getElementById('propertyName').value;
+            const propertySize = document.getElementById('propertySize').value;
+            const propertyRooms = document.getElementById('propertyRooms').value;
+            const propertyAddress = document.getElementById('propertyAddress').value;
+            const propertyPrice = document.getElementById('propertyPrice').value;
+            const propertyLocation = document.getElementById('propertyLocation').value;
+            const photoPreviews = document.getElementById('photoPreview').getElementsByTagName('img');
+    
+            const propertyPhotos = [];
+            for (const img of photoPreviews) {
+                const base64String = await getBase64FromImage(img);
+                propertyPhotos.push(base64String);
+            }
+    
+            const propertyData = {
+                propertyName,
+                propertySize,
+                propertyRooms,
+                propertyAddress,
+                propertyPrice,
+                propertyLocation,
+                propertyPhotos
+            };
+    
+            const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
+            existingProperties.push(propertyData);
+            localStorage.setItem('properties', JSON.stringify(existingProperties));
+    
+            window.location.href = 'property_display.html';
+        });
+    
+        async function getBase64FromImage(img) {
+            return new Promise((resolve, reject) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+    
+                const base64String = canvas.toDataURL('image/jpeg').split(',')[1];
+                resolve(base64String);
+            });
+        }
+    
+        document.getElementById('propertyPhotos').addEventListener('change', function (event) {
+            const photoPreview = document.getElementById('photoPreview');
+            const files = event.target.files;
+    
+            // Clear previous previews
+    
+            for (const file of files) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.alt = 'Property Photo';
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '100px';
+                img.style.borderRadius = '5px';
+                img.style.marginTop = '5px';
+                img.style.marginRight = '5px';
+                photoPreview.appendChild(img);
+            }
+        });
+    </script>
+    
     
 </body>
+
 </html>
