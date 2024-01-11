@@ -222,7 +222,7 @@ function checkLogin() {
     
     if (storedEmail && storedEmail === userPassword) {
         localStorage.setItem('isUserSignedIn', 'true');
-
+        localStorage.setItem('currentUserEmail',userEmail)
         window.location.href = '../index.html';
     } else {
         alert('Invalid email or password. Please try again.');
@@ -253,3 +253,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 });
+
+
+document.getElementById("profile-button").addEventListener("click", function() {
+    const displayStyle= document.getElementById("myDropdown").style.display;
+    if(displayStyle==="block"){
+        document.getElementById("myDropdown").style.display = "none";
+    }else{
+    document.getElementById("myDropdown").style.display = "block";
+}});
+
+
+document.getElementById("log-out").addEventListener("click", function() {
+    localStorage.setItem('isUserSignedIn', 'false');
+    const currentUserEmail = localStorage.getItem('currentUserEmail');
+    localStorage.removeItem(currentUserEmail);
+    localStorage.removeItem('currentUserEmail');
+    location.reload();
+}
+);
