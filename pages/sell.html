@@ -8,16 +8,22 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #000;
+            color: #fff; /* Text color */
         }
 
         form {
             max-width: 600px;
             margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #fff; /* White border around the form */
+            border-radius: 10px; /* Rounded corners for the form */
         }
 
         label {
             display: block;
             margin-bottom: 8px;
+            color: #ff3366; /* Pinkish-Red color for labels */
         }
 
         input, select {
@@ -25,6 +31,10 @@
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
+            background-color: #333; /* Dark background for input fields */
+            color: #fff; /* Text color */
+            border: 1px solid #fff; /* White border around input fields */
+            border-radius: 5px; /* Rounded corners for input fields */
         }
 
         #photos {
@@ -34,15 +44,38 @@
         #photos label {
             display: block;
             margin-bottom: 8px;
+            color: #ff3366; /* Pinkish-Red color for labels */
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #ff3366; /* Pinkish-Red color for buttons */
             color: white;
             padding: 10px 15px;
             border: none;
             cursor: pointer;
+            border-radius: 5px; /* Rounded corners for buttons */
         }
+
+        /* Style for file input */
+        input[type="file"] {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff; /* White border around file input */
+            border-radius: 5px; /* Rounded corners for file input */
+        }
+
+        /* Style for photo preview */
+        #photoPreview img {
+            max-width: 100%;
+            border-radius: 5px; /* Rounded corners for preview images */
+        }
+
+        /* Hover effect for buttons */
+        button:hover {
+            background-color: #ff1a4d; /* Darker pinkish-red on hover */
+        }
+
+
     </style>
 </head>
 <body>
@@ -65,10 +98,12 @@
         <label for="propertyLocation">Google Maps Link:</label>
         <input type="text" id="propertyLocation" name="propertyLocation" value="https://maps.google.com/" required>
 
-        <div id="photos">
-            <label for="propertyPhotos">Property Photos:</label>
-            <input type="file" id="propertyPhotos" name="propertyPhotos[]" accept="image/*" multiple>
-        </div>
+        <!-- Modify the input for propertyPhotos to accept multiple files -->
+        <label for="propertyPhotos">Property Photos:</label>
+        <input type="file" id="propertyPhotos" name="propertyPhotos[]" accept="image/*" multiple>
+
+        <!-- Add an img element to display selected photos -->
+        <div id="photoPreview"></div>
 
         <button type="submit">Upload Property</button>
     </form>
@@ -95,6 +130,7 @@
                 propertyLocation,
                 // Add more details as needed
             };
+            window.location.href = 'property_display.html';
 
             // Retrieve existing properties from local storage or initialize an empty array
             const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
@@ -107,6 +143,20 @@
 
             // Redirect to another page
             window.location.href = 'property_display.html';
+        });
+
+        document.getElementById('propertyPhotos').addEventListener('change', function(event) {
+            const photoPreview = document.getElementById('photoPreview');
+
+            const files = event.target.files;
+
+            for (const file of files) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.alt = 'Property Photo';
+                img.style.maxWidth = '100%';
+                photoPreview.appendChild(img);
+            }
         });
     </script>
 </body>
