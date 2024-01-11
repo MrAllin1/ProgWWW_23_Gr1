@@ -1,5 +1,5 @@
 const menu = document.querySelector('#mobile-menu');
-const menuLinks = document.querySelector('.navbar_menu');
+const menuLinks = document.querySelector('.navbar_container .navbar_menu');
 
 if (menu) {
     menu.addEventListener('click', function () {
@@ -132,7 +132,6 @@ const rightButton = document.querySelector(".arrow-button.right");
 let index = 0;
 const totalImages = gallery.children.length;
 const imageWidthPercentage = 100;
-const maxTranslate = -1100; // Maximum translate value
 
 leftButton.addEventListener("click", () => {
   index = index > 0 ? index - 1 : totalImages - 1;
@@ -146,10 +145,6 @@ rightButton.addEventListener("click", () => {
 
 function updateGalleryTransform() {
   const translateValue = -index * imageWidthPercentage;
-
-  // Loop back to 0% if the translation reaches or exceeds -1100%
-  const limitedTranslate = translateValue <= maxTranslate ? 0 : translateValue;
-
-  console.log(`Index: ${index}, Limited Translate Value: ${limitedTranslate}%`);
-  gallery.style.transform = `translateX(${limitedTranslate}%)`;
+  console.log(`Index: ${index}, Translate Value: ${translateValue}%`);
+  gallery.style.transform = `translateX(${translateValue}%)`;
 }

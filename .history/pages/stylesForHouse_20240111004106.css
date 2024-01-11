@@ -284,13 +284,12 @@
     overflow: hidden; /* Ensure that the gallery is contained within its parent */
 }
 
-.gallery img {
-    width: 50%; /* Adjusted to 100% for full width */
-    height: 50%; /* Adjusted to 100% for full height */
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    margin: 10px;
-    padding: 10px;
-}
+  .gallery img {
+    width: 50%;
+    height: 50%;
+    padding: 20px;
+    margin: 30px;
+  }
 
   .arrow-button {
     position: absolute;
@@ -317,17 +316,6 @@
   .arrow-button.right {
     right: 0;
   }
-  .feature {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* space between items */
-    margin-top: 20px;
-  }
-  
-  .feature i {
-    margin-right: 8px; /* space between icon and text */
-    color: #666666; /* icon color */
-  }
 .services_card {
     margin: 1rem;
     height: 525px;
@@ -346,12 +334,6 @@
     top: 350px;
     left: 30px;
     color: white;
-    text-decoration: none;
-}
-.services_link1{
-    position: absolute;
-    top: 35px;
-    color: black;
     text-decoration: none;
 }
 

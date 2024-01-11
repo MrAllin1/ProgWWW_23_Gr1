@@ -321,13 +321,11 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px; /* space between items */
-    margin-top: 20px;
   }
   
   .feature i {
     margin-right: 8px; /* space between icon and text */
-    color: #666666; /* icon color */
-  }
+    co
 .services_card {
     margin: 1rem;
     height: 525px;

@@ -146,9 +146,9 @@ rightButton.addEventListener("click", () => {
 
 function updateGalleryTransform() {
   const translateValue = -index * imageWidthPercentage;
-
-  // Loop back to 0% if the translation reaches or exceeds -1100%
-  const limitedTranslate = translateValue <= maxTranslate ? 0 : translateValue;
+  
+  // Limit the translation within the specified range
+  const limitedTranslate = Math.max(Math.min(translateValue, 0), maxTranslate);
 
   console.log(`Index: ${index}, Limited Translate Value: ${limitedTranslate}%`);
   gallery.style.transform = `translateX(${limitedTranslate}%)`;

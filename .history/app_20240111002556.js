@@ -130,26 +130,13 @@ const gallery = document.querySelector(".gallery");
 const leftButton = document.querySelector(".arrow-button.left");
 const rightButton = document.querySelector(".arrow-button.right");
 let index = 0;
-const totalImages = gallery.children.length;
-const imageWidthPercentage = 100;
-const maxTranslate = -1100; // Maximum translate value
 
 leftButton.addEventListener("click", () => {
-  index = index > 0 ? index - 1 : totalImages - 1;
-  updateGalleryTransform();
+  index = index > 0 ? index - 1 : gallery.children.length - 1;
+  gallery.style.transform = `translateX(-${index * 100}%)`;
 });
 
 rightButton.addEventListener("click", () => {
-  index = index < totalImages - 1 ? index + 1 : 0;
-  updateGalleryTransform();
+  index = index < gallery.children.length - 1 ? index + 1 : 0;
+  gallery.style.transform = `translateX(-${index * 100}%)`;
 });
-
-function updateGalleryTransform() {
-  const translateValue = -index * imageWidthPercentage;
-
-  // Loop back to 0% if the translation reaches or exceeds -1100%
-  const limitedTranslate = translateValue <= maxTranslate ? 0 : translateValue;
-
-  console.log(`Index: ${index}, Limited Translate Value: ${limitedTranslate}%`);
-  gallery.style.transform = `translateX(${limitedTranslate}%)`;
-}

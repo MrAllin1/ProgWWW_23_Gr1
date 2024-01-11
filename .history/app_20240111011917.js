@@ -132,7 +132,7 @@ const rightButton = document.querySelector(".arrow-button.right");
 let index = 0;
 const totalImages = gallery.children.length;
 const imageWidthPercentage = 100;
-const maxTranslate = -1100; // Maximum translate value
+const maxTranslate = -1200; // Maximum translate value
 
 leftButton.addEventListener("click", () => {
   index = index > 0 ? index - 1 : totalImages - 1;

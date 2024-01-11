@@ -292,20 +292,24 @@
     padding: 10px;
 }
 
-  .arrow-button {
+.arrow-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 24px; /* Adjust the font size as needed */
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
     cursor: pointer;
-  }
+    outline: none;
+}
 
+.left {
+    left: 10px; /* Adjust the left position as needed */
+}
+
+.right {
+    right: 10px; /* Adjust the right position as needed */
+}
   .arrow-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
@@ -316,17 +320,6 @@
 
   .arrow-button.right {
     right: 0;
-  }
-  .feature {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* space between items */
-    margin-top: 20px;
-  }
-  
-  .feature i {
-    margin-right: 8px; /* space between icon and text */
-    color: #666666; /* icon color */
   }
 .services_card {
     margin: 1rem;
@@ -346,12 +339,6 @@
     top: 350px;
     left: 30px;
     color: white;
-    text-decoration: none;
-}
-.services_link1{
-    position: absolute;
-    top: 35px;
-    color: black;
     text-decoration: none;
 }
 

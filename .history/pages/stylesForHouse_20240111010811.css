@@ -112,7 +112,8 @@
         position: absolute;
         top: -1000px;
         opacity: 0;
-        transition: all 0.5s ease;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0s linear 0.5s;
         height: 50vh;
         z-index: -1;
         background: #131313;
@@ -120,7 +121,8 @@
     .navbar_menu.active{
         top: 100%;
         opacity: 1;
-        transition: all 0.5s ease;
+        visibility: visible;
+        transition: all 0.5s ease, visibility 0s;
         z-index: 1;
         height: 50vh;
         font-size: 1.6rem;
@@ -317,17 +319,6 @@
   .arrow-button.right {
     right: 0;
   }
-  .feature {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* space between items */
-    margin-top: 20px;
-  }
-  
-  .feature i {
-    margin-right: 8px; /* space between icon and text */
-    color: #666666; /* icon color */
-  }
 .services_card {
     margin: 1rem;
     height: 525px;
@@ -346,12 +337,6 @@
     top: 350px;
     left: 30px;
     color: white;
-    text-decoration: none;
-}
-.services_link1{
-    position: absolute;
-    top: 35px;
-    color: black;
     text-decoration: none;
 }
 

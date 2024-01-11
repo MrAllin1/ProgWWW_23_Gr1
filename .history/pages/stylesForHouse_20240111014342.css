@@ -317,17 +317,6 @@
   .arrow-button.right {
     right: 0;
   }
-  .feature {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* space between items */
-    margin-top: 20px;
-  }
-  
-  .feature i {
-    margin-right: 8px; /* space between icon and text */
-    color: #666666; /* icon color */
-  }
 .services_card {
     margin: 1rem;
     height: 525px;
@@ -345,13 +334,14 @@
     position: absolute;
     top: 350px;
     left: 30px;
-    color: white;
+    color: rgb(231, 9, 9);
     text-decoration: none;
 }
 .services_link1{
     position: absolute;
-    top: 35px;
-    color: black;
+    top: 100px;
+    left: 30px;
+    color: white;
     text-decoration: none;
 }
 
