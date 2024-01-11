@@ -108,6 +108,89 @@
             height: 100px;
             overflow-y: hidden; /* Hide vertical scrollbar */
         }
+
+        button[type="submit"] {
+            background-color: #ff3366;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e6005c;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-section label {
+            margin-bottom: 8px;
+            color: #ff3366;
+        }
+
+        .form-section input,
+        .form-section select,
+        .form-section textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        input[type="file"] {
+            background-color: #ff3366;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::before {
+            content: 'Choose File';
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover,
+        input[type="file"]::before:hover {
+            background-color: #e6005c;
+        }
+        input[type="file"] {
+            display: none;
+        }
+
+        label[for="propertyPhotos"] {
+            background-color: #ff3366;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block; /* Ensure it's displayed inline with the label */
+        }
+
+        label[for="propertyPhotos"]:hover {
+            background-color: #e6005c;
+        }
+
+
     </style>
 </head>
 
@@ -158,8 +241,16 @@
         <label for="propertydescription">Property Description:</label>
         <textarea id="propertydescription" name="propertydescription" required>Default Property</textarea>
 
+        <label for="propertyType">Property Type:</label>
+        <select id="propertyType" name="propertyType" required>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Condo">Condo</option>
+            <option value="Townhouse">Townhouse</option>
+        </select>
+
         <label for="propertySize">Size:</label>
-        <input type="text" id="propertySize" name="propertySize" value="1000 sq. ft." required>
+        <input type="number" id="propertySize" name="propertySize" value="1000" placeholder="Square Foot">
 
         <label for="propertyRooms">Number of Rooms:</label>
         <input type="number" id="propertyRooms" name="propertyRooms" value="3" required>
@@ -168,7 +259,10 @@
         <input type="text" id="propertyAddress" name="propertyAddress" value="123 Main Street" required>
 
         <label for="propertyPrice">Price:</label>
-        <input type="text" id="propertyPrice" name="propertyPrice" value="$250,000" required>
+        <input type="number" id="propertyPrice" name="propertyPrice" value="" required placeholder="in $">
+
+        <label for="propertyYearBuilt">Year Built:</label>
+        <input type="number" id="propertyYearBuilt" name="propertyYearBuilt" value="2000" required>
 
         <label for="propertyLocation">Google Maps Link:</label>
         <input type="text" id="propertyLocation" name="propertyLocation" value="https://maps.google.com/" required>
@@ -178,44 +272,22 @@
 
         <div id="photoPreview"></div>
 
+        <label for="propertyGarage">Garage:</label>
+        <input type="text" id="propertyGarage" name="propertyGarage" value="2 car garage" required>
+
+        <label for="floodFactor">Flood Factor:</label>
+        <input type="text" id="floodFactor" name="floodFactor" value="Low" required>
+
+        <label for="fireFactor">Fire Factor:</label>
+        <input type="text" id="fireFactor" name="fireFactor" value="Low" required>
+
+        <label for="heatFactor">Heat Factor:</label>
+        <input type="text" id="heatFactor" name="heatFactor" value="Low" required>
+
+
         <div class="form-section">
             <label for="parking">Parking:</label>
             <input type="text" id="parking" name="parking" value="On-site parking" required>
-        </div>
-
-        <div class="form-section">
-            <label for="interior">Interior:</label>
-            <input type="text" id="interior" name="interior" value="Modern interior design" required>
-        </div>
-
-        <div class="form-section">
-            <label for="exterior">Exterior:</label>
-            <input type="text" id="exterior" name="exterior" value="Brick exterior" required>
-        </div>
-
-        <div class="form-section">
-            <label for="lotInformation">Lot Information:</label>
-            <input type="text" id="lotInformation" name="lotInformation" value="Large lot size" required>
-        </div>
-
-        <div class="form-section">
-            <label for="propertyInformation">Property Information:</label>
-            <input type="text" id="propertyInformation" name="propertyInformation" value="Single-family home" required>
-        </div>
-
-        <div class="form-section">
-            <label for="utilities">Utilities:</label>
-            <input type="text" id="utilities" name="utilities" value="Central heating and cooling" required>
-        </div>
-
-        <div class="form-section">
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" value="Convenient city location" required>
-        </div>
-
-        <div class="form-section">
-            <label for="other">Other:</label>
-            <input type="text" id="other" name="other" value="Additional features" required>
         </div>
 
         <button type="submit">Upload Property</button>
@@ -227,22 +299,21 @@
         document.getElementById('propertyForm').addEventListener('submit', async function (event) {
             event.preventDefault();
     
-            const propertyName = document.getElementById('propertyName').value;
-            const propertyDescription = document.getElementById('propertydescription').value;
-            const propertySize = document.getElementById('propertySize').value;
-            const propertyRooms = document.getElementById('propertyRooms').value;
-            const propertyAddress = document.getElementById('propertyAddress').value;
-            const propertyPrice = document.getElementById('propertyPrice').value;
-            const propertyLocation = document.getElementById('propertyLocation').value;
+            const name = document.getElementById('propertyName').value; //
+            const description = document.getElementById('propertydescription').value; //
+            const size = document.getElementById('propertySize').value; //
+            const rooms = document.getElementById('propertyRooms').value; //
+            const yearBuilt = document.getElementById('propertyYearBuilt').value; //
+            const garage = document.getElementById('propertyGarage').value; //
+            const type = document.getElementById('propertyType').value.toString(); //
+            const floodFactor = document.getElementById('floodFactor').value;
+            const fireFactor = document.getElementById('fireFactor').value;
+            const heatFactor = document.getElementById('heatFactor').value;
+            const address = document.getElementById('propertyAddress').value; //
+            const price = document.getElementById('propertyPrice').value; //
+            const mapsLink = document.getElementById('propertyLocation').value; //
             const photoPreviews = document.getElementById('photoPreview').getElementsByTagName('img');
-            const parking = document.getElementById('parking').value;
-            const interior = document.getElementById('interior').value;
-            const exterior = document.getElementById('exterior').value;
-            const lotInformation = document.getElementById('lotInformation').value;
-            const propertyInformation = document.getElementById('propertyInformation').value;
-            const utilities = document.getElementById('utilities').value;
-            const location = document.getElementById('location').value;
-            const other = document.getElementById('other').value;
+            const parking = document.getElementById('parking').value; //
     
             const propertyPhotos = [];
             for (const img of photoPreviews) {
@@ -251,23 +322,21 @@
             }
     
             const propertyData = {
-                propertyName,
-                propertyDescription,
-                propertySize,
-                propertyRooms,
-                propertyAddress,
-                propertyPrice,
-                propertyLocation,
+                name,
+                description,
+                size,
+                rooms,
+                yearBuilt,
+                garage,
+                type,
+                floodFactor,
+                fireFactor,
+                heatFactor,
+                address,
+                price,
+                mapsLink,
                 propertyPhotos,
-
-                parking,
-                interior,
-                exterior,
-                lotInformation,
-                propertyInformation,
-                utilities,
-                location,
-                other
+                parking
             };
     
             const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
