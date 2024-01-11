@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Saved Properties</h1>
+    <div id="propertyList"></div>
+
+    <script>
+        // Retrieve all properties from local storage
+        const allProperties = JSON.parse(localStorage.getItem('properties')) || [];
+
+        // Display property details
+        const propertyListContainer = document.getElementById('propertyList');
+        if (allProperties.length > 0) {
+            allProperties.forEach((propertyData, index) => {
+                // Create a link to the individual property page
+                const propertyLink = `<a href="property_${index + 1}.html">Property ${index + 1}</a>`;
+                
+                propertyListContainer.innerHTML += `
+                    <div>
+                        <h2>${propertyLink}</h2>
+                        ${renderPropertyDetails(propertyData)}
+                    </div>
+                `;
+            });
+        } else {
+            propertyListContainer.innerHTML = '<p>No properties saved yet.</p>';
+        }
+
+        // Function to render property details as HTML
+        function renderPropertyDetails(propertyData) {
+            let detailsHTML = '<ul>';
+            for (const [key, value] of Object.entries(propertyData)) {
+                detailsHTML += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+            detailsHTML += '</ul>';
+            return detailsHTML;
+        }
+    </script>
+</body>
+</html>

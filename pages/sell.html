@@ -3,9 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selling Page</title>
+    <title>Real Estate Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        #photos {
+            margin-bottom: 16px;
+        }
+
+        #photos label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <form id="propertyForm">
+        <label for="propertyName">Property Name:</label>
+        <input type="text" id="propertyName" name="propertyName" value="Default Property" required>
+
+        <label for="propertySize">Size:</label>
+        <input type="text" id="propertySize" name="propertySize" value="1000 sq. ft." required>
+
+        <label for="propertyRooms">Number of Rooms:</label>
+        <input type="number" id="propertyRooms" name="propertyRooms" value="3" required>
+
+        <label for="propertyAddress">Address:</label>
+        <input type="text" id="propertyAddress" name="propertyAddress" value="123 Main Street" required>
+
+        <label for="propertyPrice">Price:</label>
+        <input type="text" id="propertyPrice" name="propertyPrice" value="$250,000" required>
+
+        <label for="propertyLocation">Google Maps Link:</label>
+        <input type="text" id="propertyLocation" name="propertyLocation" value="https://maps.google.com/" required>
+
+        <div id="photos">
+            <label for="propertyPhotos">Property Photos:</label>
+            <input type="file" id="propertyPhotos" name="propertyPhotos[]" accept="image/*" multiple>
+        </div>
+
+        <button type="submit">Upload Property</button>
+    </form>
+    <script>
+        document.getElementById('propertyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const propertyName = document.getElementById('propertyName').value;
+            const propertySize = document.getElementById('propertySize').value;
+            const propertyRooms = document.getElementById('propertyRooms').value;
+            const propertyAddress = document.getElementById('propertyAddress').value;
+            const propertyPrice = document.getElementById('propertyPrice').value;
+            const propertyLocation = document.getElementById('propertyLocation').value;
+            const propertyPhotos = document.getElementById('propertyPhotos').files;
+
+            // Create an object with property details
+            const propertyData = {
+                propertyName,
+                propertySize,
+                propertyRooms,
+                propertyAddress,
+                propertyPrice,
+                propertyLocation,
+                // Add more details as needed
+            };
+
+            // Retrieve existing properties from local storage or initialize an empty array
+            const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
+
+            // Add the new property to the array
+            existingProperties.push(propertyData);
+
+            // Save the updated array back to local storage
+            localStorage.setItem('properties', JSON.stringify(existingProperties));
+
+            // Redirect to another page
+            window.location.href = 'property_display.html';
+        });
+    </script>
 </body>
 </html>
+
+
