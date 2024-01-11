@@ -293,45 +293,29 @@
     width: 80%;
     margin: 0 auto;
   }
-  h1 {
-    font-size: 24px;
-    color: #333;
-  }
   
-  .details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .section {
-    width: 48%;
-  }
-  
-  .section h2 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  ul {
+  .star-list {
     list-style: none;
     padding: 0;
   }
   
-  li {
-    font-size: 16px;
-    margin-bottom: 5px;
+  .star-list li {
+    margin: 5px 0;
+    background-image: url('path-to-your-star-image.png'); /* Replace with the path to your star image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px; /* Adjust padding to your preference */
+    line-height: 1.5; /* Adjust line height for better spacing */
+    display: flex;
+    align-items: center;
+    color: #fff; /* Adjust color as needed */
   }
   
-  li strong {
-    font-weight: normal;
-    color: #555;
-  }
-  
-  .right ul {
-    border-left: 2px solid #dedede;
-    padding-left: 20px;
+  .star-list li::before {
+    content: '\2605'; /* Unicode character for a star */
+    margin-right: 5px;
+    font-size: 1.5rem; /* Adjust font size as needed */
   }
 .services h1{
     background-color: #ff8177;

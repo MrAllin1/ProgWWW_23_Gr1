@@ -293,6 +293,12 @@
     width: 80%;
     margin: 0 auto;
   }
+  .star-list {
+  list-style: none;
+  padding: 0;
+}
+
+
   h1 {
     font-size: 24px;
     color: #333;

@@ -293,6 +293,7 @@
     width: 80%;
     margin: 0 auto;
   }
+  
   h1 {
     font-size: 24px;
     color: #333;
@@ -360,8 +361,8 @@
     overflow: hidden; /* Ensure that the gallery is contained within its parent */
 }
    .gallery-container p{
-        margin: 10px 0 10px 10px ; /* Adjust the top and bottom margin */
-        padding: 0 10px 10px 10px; /* Remove padding */
+        margin: 10px 0; /* Adjust the top and bottom margin */
+        padding: 0; /* Remove padding */
         line-height: 1.5; /* Adjust line height for better readability */
    }
 

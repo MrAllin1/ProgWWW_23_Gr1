@@ -293,6 +293,29 @@
     width: 80%;
     margin: 0 auto;
   }
+  .star-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .star-list li {
+    margin: 5px 0;
+    background-image: url('path-to-your-star-image.png'); /* Replace with the path to your star image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px; /* Adjust padding to your preference */
+    line-height: 1.5; /* Adjust line height for better spacing */
+    display: flex;
+    align-items: center;
+    color: #fff; /* Adjust color as needed */
+  }
+  
+  .star-list li::before {
+    content: '\2605'; /* Unicode character for a star */
+    margin-right: 5px;
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
   h1 {
     font-size: 24px;
     color: #333;
