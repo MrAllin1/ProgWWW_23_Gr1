@@ -65,6 +65,26 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
             window.location.href = './BuyRent.html';
         });
     });
+    document.querySelectorAll('.navbar_link_buy_rent_in_property_display').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = './BuyRent.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_services_in_property_display').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = '../index.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_home_in_property_display').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = '../index.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_sell_in_property_display').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = './sell.html';
+        });
+    });
 });
 
 function scrollToElement(targetElementId) {
