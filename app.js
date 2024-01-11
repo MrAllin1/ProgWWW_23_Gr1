@@ -38,7 +38,44 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
             window.location.href = './pages/BuyRent.html';
         });
     });
+    document.querySelectorAll('.navbar_link_sell').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = './pages/sell.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_home_in_buy_rent').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = '../index.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_services_in_buy_rent').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = '../index.html';
+            scrollToElement('services'); // Update with the correct ID of your services section
+        });
+    });
+    document.querySelectorAll('.navbar_link_sell_in_buy_rent').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = 'sell.html';
+        });
+    });
 });
+
+function scrollToElement(targetElementId) {
+    const targetElement = document.getElementById(targetElementId);
+
+    if (targetElement) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetOffset = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const adjustedScroll = targetOffset - navbarHeight;
+
+        window.scrollTo({
+            top: adjustedScroll,
+            behavior: 'smooth'
+        });
+    }
+}
 document.addEventListener('DOMContentLoaded', function () {
     const buyHouseBtn = document.getElementById('buyHouseBtn');
     const rentHouseBtn = document.getElementById('rentHouseBtn');
