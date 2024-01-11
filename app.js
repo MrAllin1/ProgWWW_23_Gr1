@@ -20,17 +20,7 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
         console.log(' Targettt idd '+targetId);
 
         if (targetElement) {
-            // Calculate the offset of the navbar
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-
-            // Calculate the exact scroll position considering the header height
-            const targetOffset = targetElement.getBoundingClientRect().top + window.pageYOffset;
-            const adjustedScroll = targetOffset - navbarHeight;
-
-            window.scrollTo({
-                top: adjustedScroll,
-                behavior: 'smooth'
-            });
+            scrollToElement(targetId);
         }
     });
     document.querySelectorAll('.navbar_link_buy_rent').forEach(link => {
@@ -58,6 +48,21 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
     document.querySelectorAll('.navbar_link_sell_in_buy_rent').forEach(link => {
         link.addEventListener('click', function () {
             window.location.href = 'sell.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_services_sell').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = '../index.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_home_sell').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = '../index.html';
+        });
+    });
+    document.querySelectorAll('.navbar_link_buy_rent_sell').forEach(link => {
+        link.addEventListener('click', function () {
+            window.location.href = './BuyRent.html';
         });
     });
 });
