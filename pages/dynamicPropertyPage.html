@@ -9,7 +9,7 @@
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
     <link href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
-    <title>House on Porter Ranch</title>
+    <title>New Listing</title>
     <style>
         #defaultText {
             height: 400px;
@@ -87,6 +87,31 @@
             align-items: center;
             padding: 0 1rem;
             width: 100%;
+        }
+
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Add transition for smoother shifting */
+
+        }
+        .gallery-container {
+            position: relative;
+            overflow: hidden; /* Ensure that the gallery is contained within its parent */
+            margin: 10px;
+            padding: 10px;
+        }
+        .gallery-container p{
+                margin: 10px 0 10px 10px ; /* Adjust the top and bottom margin */
+                padding: 0 10px 10px 10px; /* Remove padding */
+                line-height: 1.5; /* Adjust line height for better readability */
+        }
+
+        .gallery img {
+            width: 50%; /* Adjusted to 100% for full width */
+            height: 50%; /* Adjusted to 100% for full height */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            margin: 10px;
+            padding: 10px;
         }
     </style>
 </head>
@@ -201,7 +226,7 @@
 
         var propertyData = allProperties[propertyNumber];
         console.log(propertyData)
-        var htmlString = `<div class='gallery-container'> <h1>Welcome to ${propertyData.properyName}</h1> </br> <a href='https://www.google.com/maps/place/20352+Via+Galileo,+Porter+Ranch,+CA+91326' target='_blank' class='services_link'></a> <p> The Price of this property${propertyData.propertyPrice}</p> <span>${propertyData.propertySize} <div class='gallery' id='gallery'>  </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <p><strong> About this home</strong></br> ${propertyData.propertyDescription}</p> </div> </br> <div class='container'> <h1>Property details</h1> <div class='details'> <div class='section'> <h2>Parking</h2> <ul> <li> <strong>Parking / Garage Information:</strong><br> ${propertyData.parking} </ul> </div> </div> <div class='details'> <div class='section'> <h2>Interior</h2> <ul><li><p>${propertyData.interior}</p></li></ul> </div> </div> <div class='details'> <div class='section'> <h2>Exterior</h2> <ul> <li>${propertyData.exterior}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Lot Information</h2> <ul> <li>${propertyData.lotInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Property Information</h2> <ul> <li>${propertyData.propertyInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Utilities</h2> <ul> <li>${propertyData.utilities}</li> </ul> </div> </div> </div>`;
+        var htmlString = `<div class='gallery-container'> <h1>Welcome to ${propertyData.propertyName}</h1> </br> <a href='${propertyData.propertyLocation}' target='_blank' class='services_link'></a> <p> The Price of this property: ${propertyData.propertyPrice}</p> <span>Size : ${propertyData.propertySize} <div class='gallery' id='gallery'>  </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <p><strong> About this home</strong></br> ${propertyData.propertyDescription}</p> </div> </br> <div class='container'> <h1>Property details</h1> <div class='details'> <div class='section'> <h2>Parking</h2> <ul> <li> <strong>Parking / Garage Information:</strong><br> ${propertyData.parking} </ul> </div> </div> <div class='details'> <div class='section'> <h2>Interior</h2> <ul><li><p>${propertyData.interior}</p></li></ul> </div> </div> <div class='details'> <div class='section'> <h2>Exterior</h2> <ul> <li>${propertyData.exterior}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Lot Information</h2> <ul> <li>${propertyData.lotInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Property Information</h2> <ul> <li>${propertyData.propertyInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Utilities</h2> <ul> <li>${propertyData.utilities}</li> </ul> </div> </div> </div>`;
 
         // Update the div with id 'targetDiv' with the provided HTML string
         updateDiv('targetDiv', htmlString);
