@@ -221,7 +221,8 @@ function checkLogin() {
 
     
     if (storedEmail && storedEmail === userPassword) {
-        
+        localStorage.setItem('isUserSignedIn', 'true');
+
         window.location.href = '../index.html';
     } else {
         alert('Invalid email or password. Please try again.');
@@ -239,5 +240,16 @@ document.addEventListener('DOMContentLoaded', function () {
             checkLogin();        
         });
     }
-    
+    const signInButton = document.getElementById('signIn-button');
+    const profileButton = document.getElementById('profile-button');
+    if(signInButton){    
+        const isUserSignedIn = localStorage.getItem('isUserSignedIn') === 'true';
+    if (isUserSignedIn) {
+        signInButton.style.display = 'none';
+        profileButton.style.display = 'flex';
+    } else {
+        signInButton.style.display = 'flex';
+        profileButton.style.display = 'none';
+    }
+}
 });
