@@ -116,6 +116,9 @@
 
 <body>
     <form id="propertyForm">
+        <label for="propertyName">Size:</label>
+        <input type="text" id="propertyName" name="propertyName" value="Porter Ranch" required>
+
         <label for="propertydescription">Property Name and Description:</label>
         <textarea id="propertydescription" name="propertydescription" required>Default Property</textarea>
 
@@ -185,6 +188,7 @@
         document.getElementById('propertyForm').addEventListener('submit', async function (event) {
             event.preventDefault();
     
+            const propertyName = document.getElementById('propertyName').value;
             const propertyDescription = document.getElementById('propertydescription').value;
             const propertySize = document.getElementById('propertySize').value;
             const propertyRooms = document.getElementById('propertyRooms').value;
@@ -208,6 +212,7 @@
             }
     
             const propertyData = {
+                propertName,
                 propertyDescription,
                 propertySize,
                 propertyRooms,

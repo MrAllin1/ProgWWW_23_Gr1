@@ -132,22 +132,21 @@
 
         var propertyData = allProperties[propertyNumber];
         console.log(propertyData)
-        var htmlString = `<div class='gallery-container'> <h1>Welcome to the Porter Ranch, CA 91326 House</h1> </br> <a href='https://www.google.com/maps/place/20352+Via+Galileo,+Porter+Ranch,+CA+91326' target='_blank' class='services_link'>20352 Via Galileo, Porter Ranch, CA 91326</a> <p>$2,149,000</p> <span>439 square meters</span> <div class='gallery'>  </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <p><strong> About this home</strong></br> ${propertyData.propertyDescription}</p> </div> </br> <div class='container'> <h1>Property details for 20352 Via Galileo</h1> <div class='details'> <div class='section'> <h2>Parking</h2> <ul> <li> <strong>Parking / Garage Information:</strong><br> ${propertyData.parking} </ul> </div> </div> <div class='details'> <div class='section'> <h2>Interior</h2> <p>${propertyData.interior}</p> </div> </div> <div class='details'> <div class='section'> <h2>Exterior</h2> <ul> <li>${propertyData.exterior}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Lot Information</h2> <ul> <li>${propertyData.lotInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Property Information</h2> <ul> <li>${propertyData.propertyInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Utilities</h2> <ul> <li>${propertyData.utilities}</li> </ul> </div> </div> </div>`;
+        var htmlString = `<div class='gallery-container'> <h1>Welcome to ${propertyData.properyName}</h1> </br> <a href='https://www.google.com/maps/place/20352+Via+Galileo,+Porter+Ranch,+CA+91326' target='_blank' class='services_link'></a> <p>${propertyData.propertyPrice}</p> <span>${propertyData.propertySize} <div class='gallery' id='gallery'>  </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <p><strong> About this home</strong></br> ${propertyData.propertyDescription}</p> </div> </br> <div class='container'> <h1>Property details</h1> <div class='details'> <div class='section'> <h2>Parking</h2> <ul> <li> <strong>Parking / Garage Information:</strong><br> ${propertyData.parking} </ul> </div> </div> <div class='details'> <div class='section'> <h2>Interior</h2> <ul><li><p>${propertyData.interior}</p></li></ul> </div> </div> <div class='details'> <div class='section'> <h2>Exterior</h2> <ul> <li>${propertyData.exterior}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Lot Information</h2> <ul> <li>${propertyData.lotInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Property Information</h2> <ul> <li>${propertyData.propertyInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Utilities</h2> <ul> <li>${propertyData.utilities}</li> </ul> </div> </div> </div>`;
 
         // Update the div with id 'targetDiv' with the provided HTML string
         updateDiv('targetDiv', htmlString);
 
         const photoPreviewContainer = document.createElement('div');
-        photoPreviewContainer.classList.add('photo-preview-container');
-
-        for (const photo of propertyPhotos) {
+        const propertyPhotos = propertyData.propertyPhotos || [];
+        for (const photo of propertyData.propertyPhotos) {
             const img = document.createElement('img');
             img.src = `data:image/jpeg;base64,${photo}`;
             img.alt = 'Property Photo';
             photoPreviewContainer.appendChild(img);
         }
 
-        
+        document.getElementById('gallery').appendChild(photoPreviewContainer);
 
     </script>
     
