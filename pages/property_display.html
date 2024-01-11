@@ -1,43 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../pages/stylesForHouse.css">
+    <script src="https://kit.fontawesome.com/186711ed6a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Property Display</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Kumbh Sans', sans-serif;
             margin: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        h1 {
+            color: #ff3366;
+        }
+
+        #propertyList {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .property-card {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            width: calc(33.33% - 20px);
+            box-sizing: border-box;
+            background-size: cover;
+        }
+
+        .property-card a {
+            color: #ff3366;
+            text-decoration: none;
+        }
+
+        .property-card a:hover {
+            text-decoration: underline;
+        }
+
+        .property-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .property-details li {
+            margin-bottom: 10px;
+        }
+        /* Style for photo preview in property card */
+        .property-card img {
+            max-width: 100%;
+            max-height: 100px; /* Set the maximum height for the photo preview */
+            border-radius: 5px; /* Rounded corners for preview images */
+            margin-top: 5px; /* Add some spacing between photos */
+        }
+
+        /* Set the first property photo as a background image */
+        .property-card {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .photo-preview-container {
+            display: flex;
+            flex-wrap: nowrap; /* Ensure the photos are displayed in a single row */
+            overflow-x: auto; /* Enable horizontal scrolling for multiple photos */
+        }
+
+        .photo-preview-container img {
+            flex-shrink: 0; /* Prevent images from shrinking to fit */
+            width: 100px; /* Set a fixed width for each photo in the preview */
+            height: 100px; /* Set a fixed height for each photo in the preview */
+            margin-right: 5px; /* Add some spacing between photos */
         }
     </style>
 </head>
+
 <body>
     <h1>Saved Properties</h1>
     <div id="propertyList"></div>
 
     <script>
-        // Retrieve all properties from local storage
         const allProperties = JSON.parse(localStorage.getItem('properties')) || [];
-
-        // Display property details
         const propertyListContainer = document.getElementById('propertyList');
+
         if (allProperties.length > 0) {
             allProperties.forEach((propertyData, index) => {
-                // Create a link to the individual property page
                 const propertyLink = `<a href="property_${index + 1}.html">Property ${index + 1}</a>`;
-                
-                propertyListContainer.innerHTML += `
-                    <div>
-                        <h2>${propertyLink}</h2>
-                        ${renderPropertyDetails(propertyData)}
-                    </div>
+                const propertyPhotos = propertyData.propertyPhotos || [];
+
+                const propertyCard = document.createElement('div');
+                propertyCard.classList.add('property-card');
+                delete propertyData.propertyPhotos;
+                propertyCard.innerHTML = `
+                    <h2>${propertyLink}</h2>
+                    <div class="property-details">${renderPropertyDetails(propertyData)}</div>
                 `;
+
+                // Set the first property photo as a background image
+                // if (propertyPhotos.length > 0) {
+                //     propertyCard.style.backgroundImage = `url('data:image/jpeg;base64,${propertyPhotos[0]}')`;
+                // }
+
+                // Add a container for photo previews
+                const photoPreviewContainer = document.createElement('div');
+                photoPreviewContainer.classList.add('photo-preview-container');
+
+                // Add scaled down photo previews to the container
+                for (const photo of propertyPhotos) {
+                    const img = document.createElement('img');
+                    img.src = `data:image/jpeg;base64,${photo}`;
+                    img.alt = 'Property Photo';
+                    photoPreviewContainer.appendChild(img);
+                }
+
+                propertyCard.appendChild(photoPreviewContainer);
+                propertyListContainer.appendChild(propertyCard);
             });
         } else {
             propertyListContainer.innerHTML = '<p>No properties saved yet.</p>';
         }
 
-        // Function to render property details as HTML
         function renderPropertyDetails(propertyData) {
             let detailsHTML = '<ul>';
             for (const [key, value] of Object.entries(propertyData)) {
@@ -48,4 +140,5 @@
         }
     </script>
 </body>
+
 </html>

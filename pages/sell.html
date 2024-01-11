@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +10,33 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #000;
-            color: #fff; /* Text color */
+            color: #fff;
         }
 
         form {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            border: 2px solid #fff; /* White border around the form */
-            border-radius: 10px; /* Rounded corners for the form */
+            border: 2px solid #fff;
+            border-radius: 10px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #ff3366; /* Pinkish-Red color for labels */
+            color: #ff3366;
         }
 
-        input, select {
+        input,
+        select {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
-            background-color: #333; /* Dark background for input fields */
-            color: #fff; /* Text color */
-            border: 1px solid #fff; /* White border around input fields */
-            border-radius: 5px; /* Rounded corners for input fields */
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
         }
 
         #photos {
@@ -44,40 +46,40 @@
         #photos label {
             display: block;
             margin-bottom: 8px;
-            color: #ff3366; /* Pinkish-Red color for labels */
+            color: #ff3366;
         }
 
         button {
-            background-color: #ff3366; /* Pinkish-Red color for buttons */
+            background-color: #ff3366;
             color: white;
             padding: 10px 15px;
             border: none;
             cursor: pointer;
-            border-radius: 5px; /* Rounded corners for buttons */
+            border-radius: 5px;
         }
 
-        /* Style for file input */
         input[type="file"] {
             background-color: #333;
             color: #fff;
-            border: 1px solid #fff; /* White border around file input */
-            border-radius: 5px; /* Rounded corners for file input */
+            border: 1px solid #fff;
+            border-radius: 5px;
         }
 
-        /* Style for photo preview */
+        #photoPreview {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
         #photoPreview img {
             max-width: 100%;
-            border-radius: 5px; /* Rounded corners for preview images */
+            max-height: 100px;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-right: 5px;
         }
-
-        /* Hover effect for buttons */
-        button:hover {
-            background-color: #ff1a4d; /* Darker pinkish-red on hover */
-        }
-
-
     </style>
 </head>
+
 <body>
     <form id="propertyForm">
         <label for="propertyName">Property Name:</label>
@@ -98,29 +100,31 @@
         <label for="propertyLocation">Google Maps Link:</label>
         <input type="text" id="propertyLocation" name="propertyLocation" value="https://maps.google.com/" required>
 
-        <!-- Modify the input for propertyPhotos to accept multiple files -->
         <label for="propertyPhotos">Property Photos:</label>
         <input type="file" id="propertyPhotos" name="propertyPhotos[]" accept="image/*" multiple>
 
-        <!-- Add an img element to display selected photos -->
         <div id="photoPreview"></div>
 
         <button type="submit">Upload Property</button>
     </form>
     <script>
-        document.getElementById('propertyForm').addEventListener('submit', function(event) {
+        document.getElementById('propertyForm').addEventListener('submit', async function (event) {
             event.preventDefault();
-
-            // Get form values
+    
             const propertyName = document.getElementById('propertyName').value;
             const propertySize = document.getElementById('propertySize').value;
             const propertyRooms = document.getElementById('propertyRooms').value;
             const propertyAddress = document.getElementById('propertyAddress').value;
             const propertyPrice = document.getElementById('propertyPrice').value;
             const propertyLocation = document.getElementById('propertyLocation').value;
-            const propertyPhotos = document.getElementById('propertyPhotos').files;
-
-            // Create an object with property details
+            const propertyPhotosInput = document.getElementById('propertyPhotos');
+    
+            const propertyPhotos = [];
+            for (const file of propertyPhotosInput.files) {
+                const base64String = await readFileAsBase64(file);
+                propertyPhotos.push(base64String);
+            }
+    
             const propertyData = {
                 propertyName,
                 propertySize,
@@ -128,38 +132,47 @@
                 propertyAddress,
                 propertyPrice,
                 propertyLocation,
-                // Add more details as needed
+                propertyPhotos
             };
-            window.location.href = 'property_display.html';
-
-            // Retrieve existing properties from local storage or initialize an empty array
+    
             const existingProperties = JSON.parse(localStorage.getItem('properties')) || [];
-
-            // Add the new property to the array
             existingProperties.push(propertyData);
-
-            // Save the updated array back to local storage
             localStorage.setItem('properties', JSON.stringify(existingProperties));
-
-            // Redirect to another page
+    
             window.location.href = 'property_display.html';
         });
-
-        document.getElementById('propertyPhotos').addEventListener('change', function(event) {
+    
+        async function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    resolve(reader.result.split(',')[1]);
+                };
+                reader.onerror = (error) => {
+                    reject(error);
+                };
+            });
+        }
+    
+        document.getElementById('propertyPhotos').addEventListener('change', function (event) {
             const photoPreview = document.getElementById('photoPreview');
-
             const files = event.target.files;
-
+    
             for (const file of files) {
                 const img = document.createElement('img');
                 img.src = URL.createObjectURL(file);
                 img.alt = 'Property Photo';
                 img.style.maxWidth = '100%';
+                img.style.maxHeight = '100px';
+                img.style.borderRadius = '5px';
+                img.style.marginTop = '5px';
+                img.style.marginRight = '5px';
                 photoPreview.appendChild(img);
             }
         });
     </script>
+    
 </body>
+
 </html>
-
-
