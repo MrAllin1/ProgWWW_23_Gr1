@@ -278,15 +278,15 @@
 }
 
 #floodRisk h2::before {
-    background-image: url('/images/flood.png'); /* Replace with the actual path to your flood icon image */
+    background-image: url('flood-icon.png'); /* Replace with the actual path to your flood icon image */
 }
 
 #fireRisk h2::before {
-    background-image: url('/images/fire.png'); /* Replace with the actual path to your fire icon image */
+    background-image: url('fire-icon.png'); /* Replace with the actual path to your fire icon image */
 }
 
 #heatRisk h2::before {
-    background-image: url('/images/heater.png'); /* Replace with the actual path to your heat icon image */
+    background-image: url('heat-icon.png'); /* Replace with the actual path to your heat icon image */
 }
 
 .container {

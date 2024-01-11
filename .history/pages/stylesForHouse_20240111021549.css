@@ -256,84 +256,7 @@
     align-items: center;
     height: 100vh;
 }
-.risk-factor {
-    background-color: #f3f3f3; /* Light gray background */
-    border-left: 5px solid #000; /* Black border on the left */
-    margin: 20px 0;
-    padding: 10px;
-}
 
-.risk-factor h2 {
-    display: flex;
-    align-items: center;
-}
-
-.risk-factor h2::before {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    background-size: cover;
-}
-
-#floodRisk h2::before {
-    background-image: url('/images/flood.png'); /* Replace with the actual path to your flood icon image */
-}
-
-#fireRisk h2::before {
-    background-image: url('/images/fire.png'); /* Replace with the actual path to your fire icon image */
-}
-
-#heatRisk h2::before {
-    background-image: url('/images/heater.png'); /* Replace with the actual path to your heat icon image */
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .section {
-    width: 48%;
-  }
-  
-  .section h2 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  li strong {
-    font-weight: normal;
-    color: #555;
-  }
-  
-  .right ul {
-    border-left: 2px solid #dedede;
-    padding-left: 20px;
-  }
 .services h1{
     background-color: #ff8177;
     background-image: linear-gradient(to right, #ff8177,0%,#ff867a 0%,#ff8c7f 21%,#ff9185 52%,#cf556c 78%,#b12a5b 100%);
@@ -394,19 +317,14 @@
   .arrow-button.right {
     right: 0;
   }
-  .property-features {
-    column-count: 2;
-    column-gap: 10px;
-    -webkit-column-count: 2;
-    -moz-column-gap: 10px;
-    margin: 40px;
-  }
   .feature {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* space between items */
+    margin-bottom: 10px; /* space between items */
     margin-top: 20px;
-  }  
+    column-gap:30px;
+  }
+  
   .feature i {
     margin-right: 8px; /* space between icon and text */
     color: #666666; /* icon color */

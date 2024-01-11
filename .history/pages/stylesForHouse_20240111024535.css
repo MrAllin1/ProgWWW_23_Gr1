@@ -256,6 +256,12 @@
     align-items: center;
     height: 100vh;
 }
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 800px;
+}
+
 .risk-factor {
     background-color: #f3f3f3; /* Light gray background */
     border-left: 5px solid #000; /* Black border on the left */
@@ -278,17 +284,16 @@
 }
 
 #floodRisk h2::before {
-    background-image: url('/images/flood.png'); /* Replace with the actual path to your flood icon image */
+    background-image: url('flood-icon.png');
 }
 
 #fireRisk h2::before {
-    background-image: url('/images/fire.png'); /* Replace with the actual path to your fire icon image */
+    background-image: url('fire-icon.png');
 }
 
 #heatRisk h2::before {
-    background-image: url('/images/heater.png'); /* Replace with the actual path to your heat icon image */
+    background-image: url('heat-icon.png');
 }
-
 .container {
     width: 80%;
     margin: 0 auto;

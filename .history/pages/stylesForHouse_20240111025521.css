@@ -278,7 +278,7 @@
 }
 
 #floodRisk h2::before {
-    background-image: url('/images/flood.png'); /* Replace with the actual path to your flood icon image */
+    background-image: url('//images/flood.png'); /* Replace with the actual path to your flood icon image */
 }
 
 #fireRisk h2::before {
