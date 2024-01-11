@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='../pages/stylesForHouse.css'>
+    <script src='https://kit.fontawesome.com/186711ed6a.js' crossorigin='anonymous'></script>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+    <title>House on Porter Ranch</title>
+    <style>
+        #defaultText {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class='navbar'>
+        <div class='navbar_container'>
+            <a href='/' id='navbar_logo'> <i class='fas fa-house-flag'></i>AFA</a>
+            <div class='navbar_toggle' id='mobile-menu'>
+                <span class='bar'></span>
+                <span class='bar'></span>
+                <span class='bar'></span>
+            </div>
+            <ul class='navbar_menu'>
+                <li class='navbar_item'>
+                    <a href='#home' class='navbar_link'>Home</a>
+                </li>
+                <li class='navbar_item'>
+                    <a href='#services' class='navbar_link'>Services</a>
+                </li>
+                <li class='navbar_item'>
+                    <a href='/pages/BuyRent.html' class='navbar_link'>Buy/Rent</a>
+                </li>
+                <li class='navbar_item'>
+                    <a href='/pages/sell.html' class='navbar_link'>Sell</a>
+                </li>
+                <li class='navbar_btn'>
+                    <a href='/pages/signUp.html' class='button'>Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="targetDiv"><p id="defaultText">You are not selling any properties!</p>
+    </div>
+    <div class='footer_container'>
+        <div class='footer_links'>
+            <div class='footer_link-wrapper'>
+                <div class='footer_link-items'>
+                    <h2>About Us</h2>
+                    <a href='/'>How it works</a>
+                    <a href='/'>Testimonials</a>
+                    <a href='/'>Careers</a>
+                    <a href='/'>Terms of Service</a>
+                </div>
+                <div class='footer_link-items'>
+                    <h2>Contact Us</h2>
+                    <a href='/'>Contact</a>
+                    <a href='/'>Support</a>
+                    <a href='/'>Thro Gmail</a>
+                    <a href='/'>Phone number</a>
+                </div>
+            </div>
+            <div class='footer_link-wrapper'>
+                <div class='footer_link-items'>
+                    <h2>Partners</h2>
+                    <a href='/'>A RealEstate</a>
+                    <a href='/'>B RealEstate</a>
+                    <a href='/'>C RealEstate</a>
+                    <a href='/'>D RealEstate</a>
+                </div>
+                <div class='footer_link-items'>
+                    <h2>Social media</h2>
+                    <a href='https://www.instagram.com' target='_blank'>Instagram</a>
+                    <a href='https://www.facebook.com' target='_blank'>Facebook</a>
+                    <a href='https://www.linkedin.com' target='_blank'>LinkedIn</a>
+                    <a href='https://www.twitter.com' target='_blank'>Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class='social_media'>
+            <div class='social_media-wrap'>
+                <div class='footer_logo'>
+                    <a href='/' id='footer_logo'> <i class='fas fa-house-flag'></i>AFA</a>
+                </div>
+                <p class='website_rights'>AFA © 2023.All rights reserved</p>
+                <div class='social_icons'>
+                    <a href='/' class='social_icon_link' target='_blank'><i class='fab fa-facebook'></i></a>
+                    <a href='https://www.instagram.com' class='social_icon_link' target='_blank'><i class='fab fa-instagram'></i></a>
+                    <a href='https://www.facebook.com' class='social_icon_link' target='_blank'><i class='fab fa-youtube'></i></a>
+                    <a href='https://www.twitter.com' class='social_icon_link' target='_blank'><i class='fab fa-twitter'></i></a>
+                    <a href='https://www.linkedin.com' class='social_icon_link' target='_blank'><i class='fab fa-linkedin'></i></a>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+    <script src='../app.js'></script>
+    <script>
+        // Function to parse query parameters from the URL
+        const allProperties = JSON.parse(localStorage.getItem('properties')) || [];
+
+        var queryString = window.location.search;
+
+        // Create a URLSearchParams object from the query string
+        var urlParams = new URLSearchParams(queryString);
+
+        // Get the value of the 'number' parameter
+        var numberParam = urlParams.get('number');
+
+        // Convert the value to a number if needed
+        var propertyNumber = parseInt(numberParam, 10);
+        
+        // Function to update the specified div with the provided HTML string
+        function updateDiv(divId, newHtml) {
+        const targetDiv = document.getElementById(divId);
+
+        if (targetDiv) {
+            targetDiv.innerHTML = newHtml;
+        } else {
+            console.error(`Div with id ${divId} not found.`);
+        }
+        }
+
+        var propertyData = allProperties[propertyNumber];
+        console.log(propertyData)
+        var htmlString = `<div class='gallery-container'> <h1>Welcome to ${propertyData.properyName}</h1> </br> <a href='https://www.google.com/maps/place/20352+Via+Galileo,+Porter+Ranch,+CA+91326' target='_blank' class='services_link'></a> <p>${propertyData.propertyPrice}</p> <span>${propertyData.propertySize} <div class='gallery' id='gallery'>  </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <p><strong> About this home</strong></br> ${propertyData.propertyDescription}</p> </div> </br> <div class='container'> <h1>Property details</h1> <div class='details'> <div class='section'> <h2>Parking</h2> <ul> <li> <strong>Parking / Garage Information:</strong><br> ${propertyData.parking} </ul> </div> </div> <div class='details'> <div class='section'> <h2>Interior</h2> <ul><li><p>${propertyData.interior}</p></li></ul> </div> </div> <div class='details'> <div class='section'> <h2>Exterior</h2> <ul> <li>${propertyData.exterior}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Lot Information</h2> <ul> <li>${propertyData.lotInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Property Information</h2> <ul> <li>${propertyData.propertyInformation}</li> </ul> </div> </div> <div class='details'> <div class='section'> <h2>Utilities</h2> <ul> <li>${propertyData.utilities}</li> </ul> </div> </div> </div>`;
+
+        // Update the div with id 'targetDiv' with the provided HTML string
+        updateDiv('targetDiv', htmlString);
+
+        const photoPreviewContainer = document.createElement('div');
+        const propertyPhotos = propertyData.propertyPhotos || [];
+        for (const photo of propertyData.propertyPhotos) {
+            const img = document.createElement('img');
+            img.src = `data:image/jpeg;base64,${photo}`;
+            img.alt = 'Property Photo';
+            photoPreviewContainer.appendChild(img);
+        }
+
+        document.getElementById('gallery').appendChild(photoPreviewContainer);
+
+    </script>
+    
+</body>
+</html>
