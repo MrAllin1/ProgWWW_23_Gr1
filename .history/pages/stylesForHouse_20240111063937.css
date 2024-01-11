@@ -302,10 +302,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    padding: 20px;
   }
-  .details li {
-    margin: 30px; /* You can adjust the value to control the space between li elements */
-}
   
   .section {
     flex: 1; /* Each section takes equal width */
