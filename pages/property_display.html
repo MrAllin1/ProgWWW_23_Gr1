@@ -11,6 +11,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Property Display</title>
     <style>
+        .navbar{
+            background: #131313;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .navbar_container{
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            z-index: 1;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+        #navbar_logo{
+            color: #ff8177;
+            background-image:linear-gradient(to top,#ff0844 0%,#ffb199 100%);
+            background-size: 100%;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 2rem;
+        }
+
+        .navbar_menu{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            text-align: center;
+        }
+
+        .navbar_item{
+            height: 80px;
+        }
+
+        .navbar_link{
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 0rem 1rem;
+            height: 100%;
+        }
+
+        .navbar_link:hover{
+            color: #f77062;
+            transition: all 0.3s ease;
+        }
+        .navbar_btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            width: 100%;
+        }
         body {
             font-family: 'Kumbh Sans', sans-serif;
             margin: 20px;
@@ -86,6 +154,34 @@
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="/" id="navbar_logo"> <i class="fas fa-house-flag"></i>AFA</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="#home" class="navbar_link navbar_link_home">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="#services" class="navbar_link_services navbar_link">Services</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="./pages/BuyRent.html" class="navbar_link_buy_rent navbar_link">Buy/Rent</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="./pages/sell.html" class="navbar_link_sell navbar_link">Sell</a>
+                </li>
+                <li class="navbar_btn">
+                    <a href="/pages/signIn.html" class="button">Sign In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <h1>Saved Properties</h1>
     <div id="propertyList"></div>
 
@@ -136,6 +232,7 @@
                 detailsHTML += `<li><strong>${key}:</strong> ${value}</li>`;
             }
             detailsHTML += '</ul>';
+            detailsHTML += `<a href="dynamicPropertyPage.html?number=${allProperties.indexOf(propertyData)}">View Property Details</a>`;
             return detailsHTML;
         }
     </script>
