@@ -42,7 +42,7 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             window.location.href = '../index.html';
-            scrollToElement('services'); // Update with the correct ID of your services section
+            scrollToElement('services'); 
         });
     });
     document.querySelectorAll('.navbar_link_sell_in_buy_rent').forEach(link => {
@@ -152,11 +152,11 @@ document.querySelectorAll('.view_button').forEach(button => {
     });
 });
 
-// app.js
+
 document.addEventListener('DOMContentLoaded', function () {
     const currentPage = window.location.pathname;
     if (currentPage.includes('signUp.html')) {
-        // Code specific to the signUp.html page
+        
         const signUpForm = document.querySelector('.signUp__form');
         const signUpButton = signUpForm.querySelector('.signUp__button');
       
@@ -172,29 +172,23 @@ document.addEventListener('DOMContentLoaded', function () {
             return ;
           }
       
-          // Store email and password in localStorage
-          localStorage.setItem('email', email);
-          localStorage.setItem('password', password);
-      
-          const storedEmail = localStorage.getItem('email');
-          const storedPassword = localStorage.getItem('password');
-      
-          window.history.replaceState(null, document.title, window.location.href);
-
-          // Redirect to home page after successful signup
+          
+          localStorage.setItem(email, password);    
           window.location.href = '../index.html';
         });
     }
-    // Add more conditions for other pages as needed
+    
 });
 
 const gallery = document.querySelector(".gallery");
 const leftButton = document.querySelector(".arrow-button.left");
 const rightButton = document.querySelector(".arrow-button.right");
 let index = 0;
+if(gallery){
 const totalImages = gallery.children.length;
+
 const imageWidthPercentage = 100;
-const maxTranslate = -1100; // Maximum translate value
+const maxTranslate = -1100; 
 
 leftButton.addEventListener("click", () => {
   index = index > 0 ? index - 1 : totalImages - 1;
@@ -209,9 +203,41 @@ rightButton.addEventListener("click", () => {
 function updateGalleryTransform() {
   const translateValue = -index * imageWidthPercentage;
 
-  // Loop back to 0% if the translation reaches or exceeds -1100%
+  
   const limitedTranslate = translateValue <= maxTranslate ? 0 : translateValue;
 
   console.log(`Index: ${index}, Limited Translate Value: ${limitedTranslate}%`);
   gallery.style.transform = `translateX(${limitedTranslate}%)`;
+}}
+
+
+function checkLogin() {
+    
+    var userEmail = document.getElementById('login-email').value;
+    var userPassword = document.getElementById('login-pass').value;
+
+    
+    var storedEmail = localStorage.getItem(userEmail);
+
+    
+    if (storedEmail && storedEmail === userPassword) {
+        
+        window.location.href = '../index.html';
+    } else {
+        alert('Invalid email or password. Please try again.');
+    }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('signIn.html')) {
+        
+        const logInForm = document.querySelector('.login__form');
+        const logInButton = logInForm.querySelector('.login__button');
+      
+        logInButton.addEventListener('click', function (event) {
+          event.preventDefault();
+            checkLogin();        
+        });
+    }
+    
+});
