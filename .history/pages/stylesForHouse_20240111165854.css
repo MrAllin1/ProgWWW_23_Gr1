@@ -254,6 +254,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ff8177;
+    background-image: linear-gradient(to right, #ff8177, 0%, #ff867a 0%, #ff8c7f 21%, #ff9185 52%, #cf556c 78%, #b12a5b 100%);
+
 }
 .risk-factor {
     background-color: #f3f3f3; /* Light gray background */
@@ -394,7 +397,7 @@
   }
 
   .arrow-button:hover {
-    background-color: rgba(246, 8, 8, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .arrow-button.left {

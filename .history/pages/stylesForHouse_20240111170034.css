@@ -394,7 +394,7 @@
   }
 
   .arrow-button:hover {
-    background-color: rgba(246, 8, 8, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .arrow-button.left {
