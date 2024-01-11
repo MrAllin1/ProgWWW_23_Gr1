@@ -304,12 +304,13 @@
     margin-top: 20px;
   }
   
-  .section {
-    flex: 1; /* Each section takes equal width */
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
+      .section {
+        flex: 1; /* Each section takes equal width */
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+  
   
   .section h2 {
     font-size: 18px;
@@ -328,6 +329,7 @@
   }
   
   li strong {
+    font-weight: normal;
     color: #555;
   }
   
@@ -360,8 +362,6 @@
   .gallery-container {
     position: relative;
     overflow: hidden; /* Ensure that the gallery is contained within its parent */
-    margin: 10px;
-    padding: 10px;
 }
    .gallery-container p{
         margin: 10px 0 10px 10px ; /* Adjust the top and bottom margin */
@@ -441,7 +441,7 @@
 }
 .services_link1{
     position: absolute;
-    top: 48px;
+    top: 35px;
     color: black;
     text-decoration: none;
 }
