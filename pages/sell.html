@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate Form</title>
+    <link rel="stylesheet" href="../styles.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +15,7 @@
         }
 
         form {
-            max-width: 600px;
+            max-width: 40%;
             margin: 0 auto;
             padding: 20px;
             border: 2px solid #fff;
@@ -115,11 +116,40 @@
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="/" id="navbar_logo"> <i class="fas fa-house-flag"></i>AFA</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="#home" class="navbar_link navbar_link_home">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="#services" class="navbar_link_services navbar_link">Services</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="./pages/BuyRent.html" class="navbar_link_buy_rent navbar_link">Buy/Rent</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="./pages/sell.html" class="navbar_link_sell navbar_link">Sell</a>
+                </li>
+                <li class="navbar_btn">
+                    <a href="/pages/signIn.html" class="button">Sign In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <form id="propertyForm">
-        <label for="propertyName">Size:</label>
+        <h1>Upload Property</h1>
+        <label for="propertyName">Property Name:</label>
         <input type="text" id="propertyName" name="propertyName" value="Porter Ranch" required>
 
-        <label for="propertydescription">Property Name and Description:</label>
+        <label for="propertydescription">Property Description:</label>
         <textarea id="propertydescription" name="propertydescription" required>Default Property</textarea>
 
         <label for="propertySize">Size:</label>
@@ -184,6 +214,9 @@
 
         <button type="submit">Upload Property</button>
     </form>
+
+    <script src="../app.js"></script>
+
     <script>
         document.getElementById('propertyForm').addEventListener('submit', async function (event) {
             event.preventDefault();
@@ -212,7 +245,7 @@
             }
     
             const propertyData = {
-                propertName,
+                propertyName,
                 propertyDescription,
                 propertySize,
                 propertyRooms,
@@ -254,8 +287,6 @@
         document.getElementById('propertyPhotos').addEventListener('change', function (event) {
             const photoPreview = document.getElementById('photoPreview');
             const files = event.target.files;
-    
-            // Clear previous previews
     
             for (const file of files) {
                 const img = document.createElement('img');
