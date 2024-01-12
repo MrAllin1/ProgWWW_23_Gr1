@@ -33,6 +33,7 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
             window.location.href = './pages/sell.html';
         });
     });
+    
     document.querySelectorAll('.navbar_link_home_in_buy_rent').forEach(link => {
         link.addEventListener('click', function () {
             window.location.href = '../index.html';
