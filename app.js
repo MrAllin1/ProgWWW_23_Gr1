@@ -138,13 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (buyHouseBtn) {
         buyHouseBtn.addEventListener('click', function () {
-            window.location.href = './pages/buyRent.html';
+            window.location.href = './pages/BuyRent.html';
         });
     }
 
     if (rentHouseBtn) {
         rentHouseBtn.addEventListener('click', function () {
-            window.location.href = './pages/buyRent.html';
+            window.location.href = './pages/BuyRent.html';
         });
     }
 
