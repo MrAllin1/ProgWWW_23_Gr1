@@ -241,6 +241,9 @@
         function renderPropertyDetails(propertyData) {
             let detailsHTML = '<ul>';
             for (const [key, value] of Object.entries(propertyData)) {
+                if (key === 'photos') {
+                    continue;
+                }
                 detailsHTML += `<li><strong>${key}:</strong> ${value}</li>`;
             }
             detailsHTML += '</ul>';

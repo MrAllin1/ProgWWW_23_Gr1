@@ -239,7 +239,9 @@
         <input type="text" id="propertyName" name="propertyName" value="Porter Ranch" required>
 
         <label for="propertydescription">Property Description:</label>
-        <textarea id="propertydescription" name="propertydescription" required>Default Property</textarea>
+        <textarea id="propertydescription" name="propertydescription" required>
+            Welcome to our stunning property, a place where modern luxury meets timeless elegance. This meticulously crafted residence offers an unparalleled lifestyle with breathtaking views and unrivaled amenities. Immerse yourself in the perfect blend of sophistication and comfort. As you step into this architectural masterpiece, you'll be greeted by spacious interiors, high ceilings, and an abundance of natural light. The open-concept design seamlessly connects the living, dining, and kitchen areas, creating a sense of grandeur. Every detail has been thoughtfully considered to provide the utmost in comfort and style. The master suite is a true retreat, featuring a private oasis with a spa-like bathroom and a generous walk-in closet. Each additional bedroom is designed with both aesthetics and functionality in mind, ensuring a comfortable living space for every member of the household. The gourmet kitchen is a chef's delight, equipped with state-of-the-art appliances, custom cabinetry, and a large island perfect for entertaining. Whether you're hosting intimate gatherings or grand events, this home is designed to impress. The outdoor spaces are an extension of the luxurious interiors, offering a tranquil escape with meticulously landscaped gardens, a spacious patio, and possibly even a pool. Imagine unwinding with a glass of wine as you enjoy the sunset from your private sanctuary. This property is not just a home; it's a lifestyle. Discover the epitome of elegance and sophistication in every detail. Your dream home awaits – experience the extraordinary.
+        </textarea>
 
         <label for="propertyType">Property Type:</label>
         <select id="propertyType" name="propertyType" required>
@@ -294,6 +296,7 @@
     </form>
 
     <script src="../app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/tZ1a9meezrUb+YGBXSs4U5L/2ZlT/JJZLY/6M=" crossorigin="anonymous"></script>
 
     <script>
         document.getElementById('propertyForm').addEventListener('submit', async function (event) {
@@ -315,10 +318,10 @@
             const photoPreviews = document.getElementById('photoPreview').getElementsByTagName('img');
             const parking = document.getElementById('parking').value; //
     
-            const propertyPhotos = [];
+            const photos = [];
             for (const img of photoPreviews) {
                 const base64String = await getBase64FromImage(img);
-                propertyPhotos.push(base64String);
+                photos.push(base64String);
             }
     
             const propertyData = {
@@ -335,7 +338,7 @@
                 address,
                 price,
                 mapsLink,
-                propertyPhotos,
+                photos,
                 parking
             };
     

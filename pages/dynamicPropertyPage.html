@@ -203,50 +203,40 @@
         </div>
     </div>
 
-    <script src='../app.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
     <script>
-        // Function to parse query parameters from the URL
-        const allProperties = JSON.parse(localStorage.getItem('properties')) || [];
+        $(document).ready(function () {
+            const allProperties = JSON.parse(localStorage.getItem('properties')) || [];
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const numberParam = urlParams.get('number');
+            const propertyNumber = parseInt(numberParam, 10);
 
-        var queryString = window.location.search;
+            function updateDiv(divId, newHtml) {
+                const targetDiv = $(`#${divId}`);
+                if (targetDiv.length) {
+                    targetDiv.html(newHtml);
+                } else {
+                    console.error(`Div with id ${divId} not found.`);
+                }
+            }
 
-        // Create a URLSearchParams object from the query string
-        var urlParams = new URLSearchParams(queryString);
+            var propertyData = allProperties[propertyNumber];
+            var htmlString = `<div class='gallery-container'> <div class='header-container'> <h1 id='titulli'>Welcome to the ${propertyData.name}</h1> </div> <br> <br> <div class='gallery' id='gallery'> </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <br> <p id='paragrafi'><strong> About this apartment</strong><br><br> ${propertyData.description}.</p> </div> </br> <div class='property-features'> <div class='feature'> <i class='far fa-clock'></i> New Listing </div> <div class='feature'> <i class='fas fa-warehouse'></i> Has garage </div> <div class='feature'> <i class='fas fa-building'></i> ${propertyData.type} </div> <div class='feature'> <i class='fas fa-hand-holding-usd'></i> $532 monthly HOA fee </div> <div class='feature'> <i class='fas fa-tools'></i> Built in ${propertyData.yearBuilt} </div> <div class='feature'> <i class='fas fa-map-marker-alt'></i> <a href='${propertyData.mapsLink}'>Location</a> </div> </div> <div class='container'> <h1>Property details for ${propertyData.name}</h1> <div class='details'> <div class='section'> <h2>Other</h2> <ul> <li><strong>List Price:</strong> $ ${propertyData.price}</li> <li><strong>Property Type:</strong> ${propertyData.type}</li> <li><strong># of Bedrooms:</strong> ${propertyData.rooms}</li> </ul> </div> <div class='section right'> <h2>Listing Information</h2> <ul> <li><strong>Year Built:</strong> ${propertyData.yearBuilt}</li> <li><strong>Total Sq. Ft.:</strong> ${propertyData.size}</li> <li><strong>Parking:</strong>${propertyData.parking}</li> </ul> </div> </div> </div> <br> <div class='container'> <h1>About climate risks</h1><br> <p>Climate risks have some of natural disasters and may be impacted by climate change due to rising temperatures and sea levels.</p> <div class='risk-factor' id='floodRisk'> <h2>Flood Factor</h2> <p>${propertyData.floodFactor}</p> </div> <div class='risk-factor' id='fireRisk'> <h2>Fire Factor</h2> <p>${propertyData.fireFactor}</p> </div> <div class='risk-factor' id='heatRisk'> <h2>Heat Factor</h2> <p>${propertyData.heatFactor}</p> </div> </div>`;
 
-        // Get the value of the 'number' parameter
-        var numberParam = urlParams.get('number');
+            updateDiv('targetDiv', htmlString);
 
-        // Convert the value to a number if needed
-        var propertyNumber = parseInt(numberParam, 10);
-        
-        // Function to update the specified div with the provided HTML string
-        function updateDiv(divId, newHtml) {
-        const targetDiv = document.getElementById(divId);
 
-        if (targetDiv) {
-            targetDiv.innerHTML = newHtml;
-        } else {
-            console.error(`Div with id ${divId} not found.`);
-        }
-        }
-
-        var propertyData = allProperties[propertyNumber];
-        console.log(propertyData)
-        var htmlString = `<div class='gallery-container'> <div class='header-container'> <h1 id='titulli'>Welcome to the ${propertyData.name}</h1> </div> <br> <br> <div class='gallery'> </div> <button class='arrow-button left'>&#8249;</button> <button class='arrow-button right'>&#8250;</button> <br> <p id='paragrafi'><strong> About this apartment</strong><br><br> ${propertyData.description}.</p> </div> </br> <div class='property-features'> <div class='feature'> <i class='far fa-clock'></i> New Listing </div> <div class='feature'> <i class='fas fa-warehouse'></i> Has garage </div> <div class='feature'> <i class='fas fa-building'></i> ${propertyData.type} </div> <div class='feature'> <i class='fas fa-hand-holding-usd'></i> $532 monthly HOA fee </div> <div class='feature'> <i class='fas fa-tools'></i> Built in ${propertyData.yearBuilt} </div> <div class='feature'> <i class='fas fa-map-marker-alt'></i> <a href='${propertyData.mapsLink}'>Location</a> </div> </div> <div class='container'> <h1>Property details for ${propertyData.name}</h1> <div class='details'> <div class='section'> <h2>Other</h2> <ul> <li><strong>List Price:</strong> $ ${propertyData.price}</li> <li><strong>Property Type:</strong> ${propertyData.type}</li> <li><strong># of Bedrooms:</strong> ${propertyData.rooms}</li> </ul> </div> <div class='section right'> <h2>Listing Information</h2> <ul> <li><strong>Year Built:</strong> ${propertyData.yearBuilt}</li> <li><strong>Total Sq. Ft.:</strong> ${propertyData.size}</li> <li><strong>Parking:</strong>${propertyData.parking}</li> </ul> </div> </div> </div> <br> <div class='container'> <h1>About climate risks</h1><br> <p>Climate risks have some of natural disasters and may be impacted by climate change due to rising temperatures and sea levels.</p> <div class='risk-factor' id='floodRisk'> <h2>Flood Factor</h2> <p>${propertyData.floodFactor}</p> </div> <div class='risk-factor' id='fireRisk'> <h2>Fire Factor</h2> <p>${propertyData.fireFactor}</p> </div> <div class='risk-factor' id='heatRisk'> <h2>Heat Factor</h2> <p>${propertyData.heatFactor}</p> </div> </div>`;
-
-        // Update the div with id 'targetDiv' with the provided HTML string
-        updateDiv('targetDiv', htmlString);
-
-        const photoPreviewContainer = document.createElement('div');
-        const propertyPhotos = propertyData.propertyPhotos || [];
-        for (const photo of propertyData.propertyPhotos) {
-            const img = document.createElement('img');
-            img.src = `data:image/jpeg;base64,${photo}`;
-            img.alt = 'Property Photo';
-            photoPreviewContainer.appendChild(img);
-        }
-
-        document.getElementById('gallery').appendChild(photoPreviewContainer);
+            const propertyPhotos = propertyData.photos || [];
+            for (const photo of propertyPhotos) {
+                const img = document.createElement('img');
+                console.log(photo);
+                img.src = `data:image/png;base64,${photo}`;
+                console.log(img.src);
+                img.alt = 'Property Photo';
+                document.getElementById('gallery').appendChild(img);
+            }
+        });
 
         function checkLogin() {
     
@@ -349,6 +339,6 @@ document.getElementById("delete-account").addEventListener("click", function() {
     }});
 
     </script>
-    
+    <script src="../app.js"></script>
 </body>
 </html>
