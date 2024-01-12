@@ -126,20 +126,26 @@
             </div>
             <ul class='navbar_menu'>
                 <li class='navbar_item'>
-                    <a href='#home' class='navbar_link'>Home</a>
+                    <a href='../index.html' class='navbar_link navbar_link_home_in_dynamic'>Home</a>
                 </li>
                 <li class='navbar_item'>
-                    <a href='#services' class='navbar_link'>Services</a>
+                    <a href='../index.html' class='navbar_link navbar_link_services_in_dynamic'>Services</a>
                 </li>
                 <li class='navbar_item'>
-                    <a href='/pages/BuyRent.html' class='navbar_link'>Buy/Rent</a>
+                    <a href='./BuyRent.html' class='navbar_link navbar_link_buy_rent_in_dynamic'>Buy/Rent</a>
                 </li>
                 <li class='navbar_item'>
-                    <a href='/pages/sell.html' class='navbar_link'>Sell</a>
+                    <a href='./sell.html' class='navbar_link navbar_link_sell_in_dynamic'>Sell</a>
                 </li>
-                <li class='navbar_btn'>
-                    <a href='/pages/signUp.html' class='button'>Sign Up</a>
-                </li>
+                <a href="#" class="profile-button" id="profile-button">
+                    <i class="fas fa-user fa-sm"></i>
+                </a>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">Your property-details</a>
+                    <a href="#" id="log-out">Log Out</a>
+                    <a href="#" id="delete-account">Delete account permamently</a>
+                </div>
+            </li>
             </ul>
         </div>
     </nav>
@@ -241,6 +247,106 @@
         }
 
         document.getElementById('gallery').appendChild(photoPreviewContainer);
+
+        function checkLogin() {
+    
+    var userEmail = document.getElementById('login-email').value;
+    var userPassword = document.getElementById('login-pass').value;
+
+    
+    var storedEmail = localStorage.getItem(userEmail);
+
+    
+    if (storedEmail && storedEmail === userPassword) {
+        localStorage.setItem('isUserSignedIn', 'true');
+        localStorage.setItem('currentUserEmail',userEmail)
+        window.location.href = '../index.html';
+    } else {
+        alert('Invalid email or password. Please try again.');
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('signIn.html')) {
+        
+        const logInForm = document.querySelector('.login__form');
+        const logInButton = logInForm.querySelector('.login__button');
+      
+        logInButton.addEventListener('click', function (event) {
+          event.preventDefault();
+            checkLogin();        
+        });
+    }
+    const signInButton = document.getElementById('signIn-button');
+    const profileButton = document.getElementById('profile-button');
+    if(signInButton){    
+        const isUserSignedIn = localStorage.getItem('isUserSignedIn') === 'true';
+    if (isUserSignedIn) {
+        signInButton.style.display = 'none';
+        profileButton.style.display = 'flex';
+    } else {
+        signInButton.style.display = 'flex';
+        profileButton.style.display = 'none';
+    }
+}
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('signUp.html')) {
+        
+        const signUpForm = document.querySelector('.signUp__form');
+        const signUpButton = signUpForm.querySelector('.signUp__button');
+      
+        signUpButton.addEventListener('click', function (event) {
+          event.preventDefault();
+            saveData();        
+        });
+    }
+});
+
+function saveData() {
+    var userEmail = document.getElementById('signUp-email').value;
+    var userPassword = document.getElementById('signUp-pass').value;
+    var userPasswordConfirm = document.getElementById('signUp-pass-confirm').value;
+
+    if (userPassword !== userPasswordConfirm) {
+        alert("Passwords do not match");
+        return ;
+      }else{
+        localStorage.setItem('isUserSignedIn', 'true');
+        localStorage.setItem('currentUserEmail',userEmail);
+        localStorage.setItem(userEmail, userPassword);
+        window.location.href = '../index.html';
+      }
+}
+
+
+document.getElementById("profile-button").addEventListener("click", function() {
+    const displayStyle= document.getElementById("myDropdown").style.display;
+    if(displayStyle==="flex"){
+        document.getElementById("myDropdown").style.display = "none";
+    }else{
+    document.getElementById("myDropdown").style.display = "flex";
+}});
+
+document.getElementById("log-out").addEventListener("click", function() {
+    localStorage.setItem('isUserSignedIn', 'false');
+    localStorage.removeItem('currentUserEmail');
+    location.reload();
+}
+);
+
+document.getElementById("delete-account").addEventListener("click", function() {
+
+   if(confirm('Are you sure you want to delete your account permamently')==true){
+    localStorage.setItem('isUserSignedIn', 'false');
+    const currentUserEmail = localStorage.getItem('currentUserEmail');
+    localStorage.removeItem(currentUserEmail);
+    localStorage.removeItem('currentUserEmail');
+    location.reload();
+    }else{
+
+    }});
 
     </script>
     
