@@ -25,7 +25,7 @@
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 #navbar_logo{
     color: #ff8177;
@@ -216,7 +216,22 @@
     }
 }
 
+.video-container {
+    width: 100%;
+    max-width: 1000px; /* Adjust as needed */
+    margin: auto;
+    padding-top: 20px;
+}
+body{
+    background-color:#131313;
+}
 
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
 
 /* Hero section css*/
 
