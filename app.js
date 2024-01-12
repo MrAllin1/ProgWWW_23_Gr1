@@ -85,6 +85,12 @@ document.querySelectorAll('.navbar_link').forEach(anchor => {
             window.location.href = './sell.html';
         });
     });
+
+    document.querySelectorAll('.main_btn').forEach(link => {
+        link.addEventListener('click', function () {
+            scrollToElement('services');
+        });
+    });
 });
 
 function scrollToElement(targetElementId) {
